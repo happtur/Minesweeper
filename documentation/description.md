@@ -7,13 +7,13 @@ time to implement some kind of feature where the player can choose the
 grid size and amount of bombs). 
 
 
-##actors:
+###actors:
 player
 
-##actions:
+###actions:
 
 - starting a new game
-  -the current game is lost and a new one starts
+  - the current game is lost and a new one starts
 
 - choosing size of grid and amount of bombs (if there is time)
 
