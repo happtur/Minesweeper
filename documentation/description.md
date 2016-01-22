@@ -18,7 +18,7 @@ player
 - choosing size of grid and amount of bombs (if there is time)
 
 - turning a tile
-  - if the tile is bomb, the game is lost
+  - if the tile is a bomb, the game is lost
   - if the tile is the last non-bomb tile, the game is won
   - otherwise the tile displays the number of adjacent bombs
 
