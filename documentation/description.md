@@ -15,7 +15,7 @@ player
 - starting a new game
   - the current game is lost and a new one starts
 
-- choosing size of grid and amount of bombs (if there is time)
+- choosing the size of the grid and the amount of bombs (if there is time)
 
 - turning a tile
   - if the tile is a bomb, the game is lost
