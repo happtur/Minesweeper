@@ -7,4 +7,4 @@
 **28.01.2016** 4h *Began programming, focusing on the logic of the game
  and a temporary textual ui. I also wrote a few JUnit tests.*
 
-**29.01.2016** 16.30
+**29.01.2016** 0,75h *readme, pit*
