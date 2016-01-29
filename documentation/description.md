@@ -25,4 +25,4 @@ player
 - flagging/unflagging a tile
 
 
-![Preliminary class diagram](/classDiagram1.png)
+![Preliminary class diagram](documentation/classDiagram1.png)
