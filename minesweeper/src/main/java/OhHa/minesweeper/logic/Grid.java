@@ -6,12 +6,14 @@ import java.util.Random;
 public class Grid {
 
     private ArrayList<ArrayList<Tile>> tiles;
+    private int bombs;
 
     public Grid(int size, int bombs) {
 
+        this.bombs = bombs;
         this.tiles = new ArrayList<>();
         createRowsAndTiles(size);
-        createBombs(bombs);
+        createBombs();
         setValuesOfTiles();
     }
 
@@ -25,7 +27,7 @@ public class Grid {
         }
     }
     
-    private void createBombs(int bombs) {
+    private void createBombs() {
         int size = this.tiles.size();
         Random random = new Random();
         for (int i = 0; i < bombs; i++) {
@@ -84,6 +86,10 @@ public class Grid {
     
     public int getSize() {
         return this.tiles.size();
+    }
+    
+    public int amountOfBombs() {
+        return this.bombs;
     }
 
 }

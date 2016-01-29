@@ -6,6 +6,11 @@ public class Game {
 
     private Grid grid;
     private TextUI ui;
+    private int turnedTiles;
+
+    public Game() {
+        this.turnedTiles = 0;
+    }
 
     void addUI(TextUI ui) {
         this.ui = ui;
@@ -13,11 +18,10 @@ public class Game {
 
     public void start() {
 
-        while (true) {
-            this.grid = new Grid(8, 10);
+        this.grid = new Grid(8, 10);
 
-            this.ui.start();
-        }
+        this.ui.start();
+
     }
 
     public int getSizeOfGrid() {
@@ -32,8 +36,29 @@ public class Game {
         return this.grid.getTile(x, y).getValue();
     }
 
-    public void turn(int x, int y) {
-        this.grid.getTile(x, y).turn();
+    public boolean turn(int x, int y) {
+        Tile toBeTurned = this.grid.getTile(x, y);
+        if (toBeTurned.turn()) {
+            this.turnedTiles++;
+
+            if (toBeTurned.isBomb() || this.isWon()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void flag(int x, int y) {
+        this.grid.getTile(x, y).flag();
+    }
+
+    public boolean isWon() {
+        int size = this.grid.getSize();
+        return this.turnedTiles == size * size - this.grid.amountOfBombs();
+    }
+
+    public boolean isFlagged(int x, int y) {
+        return this.grid.getTile(x, y).isFlagged();
     }
 
 }

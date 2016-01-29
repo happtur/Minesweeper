@@ -29,11 +29,12 @@ public class Tile {
         return value;
     }
     
-    //boolean? turned?
-    public void turn() {
-        if(!this.flagged) {
+    public boolean turn() {
+        if(!this.flagged && !this.turned) {
             this.turned = true;
+            return true;
         }
+        return false;
     }
     
     public void flag() {
