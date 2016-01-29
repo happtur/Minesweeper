@@ -39,6 +39,7 @@ public class TextUI {
         for (int y = 0; y < this.game.getSizeOfGrid(); y++) {
             for (int x = 0; x < this.game.getSizeOfGrid(); x++) {
 
+                //move to Game? Depends on the properties of the GUI
                 if (!this.game.isTurned(x, y)) {
                     if (!this.game.isFlagged(x, y)) {
                         System.out.print("*");

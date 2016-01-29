@@ -37,6 +37,10 @@ public class Game {
     }
 
     public boolean turn(int x, int y) {
+        if(!this.grid.tileOnGrid(x, y)) {
+            return true;
+        }
+        
         Tile toBeTurned = this.grid.getTile(x, y);
         if (toBeTurned.turn()) {
             this.turnedTiles++;
@@ -49,6 +53,9 @@ public class Game {
     }
 
     public void flag(int x, int y) {
+        if(!this.grid.tileOnGrid(x, y)) {
+            return;
+        }
         this.grid.getTile(x, y).flag();
     }
 

@@ -76,7 +76,7 @@ public class Grid {
     }
 
 
-    private boolean tileOnGrid(int x, int y) {
+    public boolean tileOnGrid(int x, int y) {
         return x < this.tiles.size() && x > -1 && y < this.tiles.size() && y >= 0;
     }
     
