@@ -23,3 +23,6 @@ player
   - otherwise the tile displays the number of adjacent bombs
 
 - flagging/unflagging a tile
+
+
+![Preliminary class diagram](/classDiagram1.png)
