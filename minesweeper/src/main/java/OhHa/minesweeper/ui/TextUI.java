@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class TextUI {
 
     /*    
-     Since this is a temporary ui used mostly as a programming tool, I won't bother
+     Since this is a temporary ui used as a programming tool, I won't bother
      making it fool proof or user friendly.
      x grows from left to right, y grows downwards.
      */
