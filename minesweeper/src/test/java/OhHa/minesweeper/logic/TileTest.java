@@ -92,6 +92,26 @@ public class TileTest {
     }
     
     @Test
+    public void turningTheTileOnceReturnsTrue() {
+        assertEquals(true, tile.turn());
+    }
+    
+    @Test
+    public void turningTheTileTwiceReturnsFalse() {
+        tile.turn();
+        assertEquals(false, tile.turn());
+    }
+    
+    @Test
+    public void turningTheTileMultipleTimesReturnsFalse() {
+        tile.turn();
+        tile.turn();
+        tile.turn();
+        tile.turn();
+        assertEquals(false, tile.turn());
+    }
+    
+    @Test
     public void afterTurningTheTileTwiceItIsTurned() {
         tile.turn();
         tile.turn();
