@@ -1,3 +1,5 @@
+package OhHa.minesweeper.logic;
+
 
 
 import OhHa.minesweeper.logic.Tile;

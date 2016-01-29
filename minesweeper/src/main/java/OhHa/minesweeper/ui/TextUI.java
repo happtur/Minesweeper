@@ -1,16 +1,16 @@
 
 package OhHa.minesweeper.ui;
 
-import OhHa.minesweeper.logic.Grid;
+import OhHa.minesweeper.logic.Game;
 import java.util.Scanner;
 
 public class TextUI {
     
     private Scanner scanner;
-    private Grid grid;
+    private Game game;
     
-    public TextUI(Grid grid) {
-        this.grid = grid;
+    public TextUI(Game game) {
+        this.game = game;
         this.scanner = new Scanner(System.in);
     }
     
@@ -23,13 +23,13 @@ public class TextUI {
     }
 
     private void displayGame() {
-        for(int y = 0; y < this.grid.getSize(); y++) {
-            for(int x = 0; x < this.grid.getSize(); x++) {
+        for(int y = 0; y < this.game.getSizeOfGrid(); y++) {
+            for(int x = 0; x < this.game.getSizeOfGrid(); x++) {
                 
-                if(!this.grid.isTurned(x,y)) {
+                if(!this.game.isTurned(x,y)) {
                     System.out.print("*");
                 } else {
-                    System.out.print(this.grid.getValue(x,y));
+                    System.out.print(this.game.getValue(x,y));
                 }                
             }
             System.out.println("");
@@ -45,7 +45,7 @@ public class TextUI {
         System.out.print("y: ");
         int y = Integer.parseInt(scanner.nextLine());
         
-        this.grid.turn(x, y);        
+        this.game.turn(x, y);        
     }
     
 }

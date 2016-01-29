@@ -77,22 +77,13 @@ public class Grid {
     private boolean tileOnGrid(int x, int y) {
         return x < this.tiles.size() && x > -1 && y < this.tiles.size() && y >= 0;
     }
-
-    public void turn(int x, int y) {
-        this.tiles.get(x).get(y).turn();
-        //return value? what if flagged?
+    
+    public Tile getTile(int x, int y) {
+        return this.tiles.get(x).get(y);
     }
     
     public int getSize() {
         return this.tiles.size();
-    }
-    
-    public boolean isTurned(int x, int y) {
-        return this.tiles.get(x).get(y).isTurned();
-    }
-    
-    public int getValue(int x, int y) {
-        return this.tiles.get(x).get(y).getValue();
     }
 
 }
