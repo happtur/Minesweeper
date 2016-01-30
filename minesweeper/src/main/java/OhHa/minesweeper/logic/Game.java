@@ -8,15 +8,12 @@ public class Game {
     private TextUI ui;
     private int turnedTiles;
 
-    public Game() {
-        this.turnedTiles = 0;
-    }
-
     void addUI(TextUI ui) {
         this.ui = ui;
     }
 
     public void start() {
+        this.turnedTiles = 0;
 
         this.grid = new Grid(8, 10);
 
