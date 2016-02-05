@@ -26,3 +26,5 @@ player
 
 
 ![Preliminary class diagram](classDiagram1.png)
+
+![A tad more descriptive diagram](classDiagram2.png)

@@ -10,5 +10,6 @@
 **29.01.2016** 4h *Drew a class diagram, improved on the program,
  generated a pit report and updated the project documentation.*
 
-**05.02.2016** 3.25h *Wrote more tests (for Grid and Game) and created a
-new pit report. Made some adjustments to the code.*
+**05.02.2016** 4h *Wrote more tests (for Grid and Game) and created a
+new pit report. Made some adjustments to the code. Drew a tad more
+descriptive class diagram.*
