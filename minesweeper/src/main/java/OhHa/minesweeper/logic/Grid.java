@@ -7,14 +7,20 @@ public class Grid {
 
     private ArrayList<ArrayList<Tile>> tiles;
     private int bombs;
+    private Random random;
 
-    public Grid(int size, int bombs) {
+    public Grid(int size, int bombs, Random random) {
 
         this.bombs = bombs;
+        this.random = random;
         this.tiles = new ArrayList<>();
         createRowsAndTiles(size);
         createBombs();
         setValuesOfTiles();
+    }
+    
+    public Grid(int size, int bombs) {
+        this(size, bombs, new Random());
     }
 
     private void createRowsAndTiles(int size) {
@@ -29,17 +35,16 @@ public class Grid {
     
     private void createBombs() {
         int size = this.tiles.size();
-        Random random = new Random();
         for (int i = 0; i < bombs; i++) {
 
             int x;
             int y;
             while (true) {
-                x = random.nextInt(size);
-                y = random.nextInt(size);
+                x = this.random.nextInt(size);
+                y = this.random.nextInt(size);
 
-                if (!this.tiles.get(y).get(x).isBomb()) {
-                    this.tiles.get(y).get(x).setAsBomb();
+                if (!this.tiles.get(x).get(y).isBomb()) {
+                    this.tiles.get(x).get(y).setAsBomb();
                     break;
                 }
             }

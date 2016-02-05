@@ -1,24 +1,15 @@
 package OhHa.minesweeper.logic;
 
-import OhHa.minesweeper.ui.TextUI;
+import java.util.Random;
 
 public class Game {
 
     private Grid grid;
-    private TextUI ui;
     private int turnedTiles;
 
-    void addUI(TextUI ui) {
-        this.ui = ui;
-    }
-
-    public void start() {
+    public Game(int size, int bombs) {
         this.turnedTiles = 0;
-
-        this.grid = new Grid(8, 10);
-
-        this.ui.start();
-
+        this.grid = new Grid(size, bombs);
     }
 
     public int getSizeOfGrid() {

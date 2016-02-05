@@ -13,26 +13,35 @@ public class TextUI {
     private Scanner scanner;
     private Game game;
 
-    public TextUI(Game game) {
-        this.game = game;
+    public TextUI() {
         this.scanner = new Scanner(System.in);
     }
 
     public void start() {
 
         while (true) {
-            this.displayGame();
-            if (!this.receiveCommand()) {
-                break;
-            }
-        }
+            System.out.print("size: ");
+            int size = Integer.parseInt(scanner.nextLine());
+            
+            System.out.print("amount of bombs: ");
+            int bombs = Integer.parseInt(scanner.nextLine());
+            
+            this.game = new Game(size, bombs);
 
-        if (this.game.isWon()) {
-            System.out.println("CONGRATULATIONS! YOU WON!\n");
-        } else {
-            System.out.println("GAME OVER\n");
+            while (true) {
+                this.displayGame();
+                if (!this.receiveCommand()) {
+                    break;
+                }
+            }
+
+            if (this.game.isWon()) {
+                System.out.println("CONGRATULATIONS! YOU WON!\n");
+            } else {
+                System.out.println("GAME OVER\n");
+            }
+
         }
-        this.game.start();
     }
 
     private void displayGame() {
@@ -45,7 +54,7 @@ public class TextUI {
                         System.out.print("*");
                     } else {
                         System.out.print("-");
-                    }                    
+                    }
                 } else {
                     System.out.print(this.game.getValue(x, y));
                 }
