@@ -14,5 +14,9 @@
 new pit report. Made some adjustments to the code. Drew a tad more
 descriptive class diagram.*
 
-**12.02.2016** 14.00 (completed short GUI builder tutorial), javadoc 
-for classes and all methods in Tile, started on GUI, checkstyle
+**12.02.2016** 3h *(Completed the suggested short GUI builder tutorial).
+ Started on the GUI (without using the GUI builder).
+ Wrote JavaDoc descriptions for all classes and all methods in Tile.
+ Followed the instructions and generated a Checkstyle report,
+ corrected the errors and generated a new report, which I submitted to
+ the documentation.*
