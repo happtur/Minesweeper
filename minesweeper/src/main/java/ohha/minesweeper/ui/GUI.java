@@ -41,7 +41,8 @@ public class GUI implements Runnable {
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 JButton button = new JButton();
-                button.setName(String.valueOf(x) + String.valueOf(y));
+                button.setActionCommand(String.valueOf(x) + ":" + String.valueOf(y));
+                button.addActionListener(new TurnListener(game,button));
                 container.add(button);
             }
         }

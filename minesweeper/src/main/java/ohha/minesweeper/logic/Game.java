@@ -28,10 +28,26 @@ public class Game {
         return this.grid.getTile(x, y).isTurned();
     }
 
+    public int getValue(String xy) {
+        String[] coordinates = xy.split(":");
+        int x = Integer.parseInt(coordinates[0]);
+        int y = Integer.parseInt(coordinates[1]);
+        
+        return getValue(x, y);
+    }
+    
     public int getValue(int x, int y) {
         return this.grid.getTile(x, y).getValue();
     }
 
+    
+    public boolean turn(String xy) {
+        String[] coordinates = xy.split(":");
+        int x = Integer.parseInt(coordinates[0]);
+        int y = Integer.parseInt(coordinates[1]);
+        
+        return this.turn(x, y);
+    }
     //param String xy --> divide and parseInt
     public boolean turn(int x, int y) {
         if (!this.grid.tileOnGrid(x, y)) {
