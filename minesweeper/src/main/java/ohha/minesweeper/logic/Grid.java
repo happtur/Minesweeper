@@ -65,23 +65,27 @@ public class Grid {
                     continue;
                 }
 
-                int adjacentBombs = 0;
-                for (int k = -1; k < 2; k++) {
-                    if (this.tileOnGrid(i - 1, j + k) && this.tiles.get(i - 1).get(j + k).isBomb()) {
-                        adjacentBombs++;
-                    }
-                    if (k != 0 && this.tileOnGrid(i, j + k) && this.tiles.get(i).get(j + k).isBomb()) {
-                        adjacentBombs++;
-                    }
-                    if (this.tileOnGrid(i + 1, j + k) && this.tiles.get(i + 1).get(j + k).isBomb()) {
-                        adjacentBombs++;
-                    }
-                }
-
+                int adjacentBombs = countBombs(i, j);
                 this.tiles.get(i).get(j).setValue(adjacentBombs);
 
             }
         }
+    }
+
+    private int countBombs(int i, int j) {
+        int adjacentBombs = 0;
+        for (int k = -1; k < 2; k++) {
+            if (this.tileOnGrid(i - 1, j + k) && this.tiles.get(i - 1).get(j + k).isBomb()) {
+                adjacentBombs++;
+            }
+            if (k != 0 && this.tileOnGrid(i, j + k) && this.tiles.get(i).get(j + k).isBomb()) {
+                adjacentBombs++;
+            }
+            if (this.tileOnGrid(i + 1, j + k) && this.tiles.get(i + 1).get(j + k).isBomb()) {
+                adjacentBombs++;
+            }
+        }
+        return adjacentBombs;
     }
 
 
