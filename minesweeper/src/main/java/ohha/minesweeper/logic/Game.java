@@ -10,6 +10,11 @@ public class Game {
     private Grid grid;
     private int turnedTiles;
 
+    Game(Grid grid) {
+        this.turnedTiles = 0;
+        this.grid = grid;
+    }
+    
     public Game(int size, int bombs) {
         this.turnedTiles = 0;
         this.grid = new Grid(size, bombs);

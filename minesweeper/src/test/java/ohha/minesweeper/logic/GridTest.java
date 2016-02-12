@@ -1,4 +1,4 @@
-package OhHa.minesweeper.logic;
+package ohha.minesweeper.logic;
 
 import ohha.minesweeper.logic.Grid;
 import java.util.Random;

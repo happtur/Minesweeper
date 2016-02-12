@@ -1,5 +1,5 @@
 
-package OhHa.minesweeper.logic;
+package ohha.minesweeper.logic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
