@@ -2,7 +2,7 @@ package OhHa.minesweeper.logic;
 
 
 
-import OhHa.minesweeper.logic.Tile;
+import ohha.minesweeper.logic.Tile;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

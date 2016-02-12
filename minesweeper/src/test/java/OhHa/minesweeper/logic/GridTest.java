@@ -1,5 +1,6 @@
 package OhHa.minesweeper.logic;
 
+import ohha.minesweeper.logic.Grid;
 import java.util.Random;
 import org.junit.After;
 import org.junit.AfterClass;

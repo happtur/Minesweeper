@@ -1,7 +1,10 @@
-package OhHa.minesweeper.logic;
+package ohha.minesweeper.logic;
 
 import java.util.Random;
 
+/**
+ * The class is the main logic class, in charge of the game.
+ */
 public class Game {
 
     private Grid grid;
@@ -24,11 +27,12 @@ public class Game {
         return this.grid.getTile(x, y).getValue();
     }
 
+    //param String xy --> divide and parseInt
     public boolean turn(int x, int y) {
-        if(!this.grid.tileOnGrid(x, y)) {
+        if (!this.grid.tileOnGrid(x, y)) {
             return true;
         }
-        
+
         Tile toBeTurned = this.grid.getTile(x, y);
         if (toBeTurned.turn()) {
             this.turnedTiles++;
@@ -41,7 +45,7 @@ public class Game {
     }
 
     public void flag(int x, int y) {
-        if(!this.grid.tileOnGrid(x, y)) {
+        if (!this.grid.tileOnGrid(x, y)) {
             return;
         }
         this.grid.getTile(x, y).flag();

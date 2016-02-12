@@ -13,3 +13,6 @@
 **05.02.2016** 4h *Wrote more tests (for Grid and Game) and created a
 new pit report. Made some adjustments to the code. Drew a tad more
 descriptive class diagram.*
+
+**12.02.2016** 14.00 (completed short GUI builder tutorial), javadoc 
+for classes and all methods in Tile, started on GUI, checkstyle

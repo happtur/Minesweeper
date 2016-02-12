@@ -1,9 +1,12 @@
-package OhHa.minesweeper.ui;
+package ohha.minesweeper.ui;
 
-import OhHa.minesweeper.logic.Game;
+import ohha.minesweeper.logic.Game;
 import java.util.Scanner;
 
-public class TextUI {
+/**
+ * The class is a temporary ui used as a programming tool.
+ */
+public class TextUI implements Runnable {
 
     /*    
      Since this is a temporary ui used as a programming tool, I won't bother
@@ -17,7 +20,7 @@ public class TextUI {
         this.scanner = new Scanner(System.in);
     }
 
-    public void start() {
+    public void run() {
 
         while (true) {
             System.out.print("size: ");

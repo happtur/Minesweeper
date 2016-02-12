@@ -1,5 +1,6 @@
 package OhHa.minesweeper.logic;
 
+import ohha.minesweeper.logic.Game;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

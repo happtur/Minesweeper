@@ -1,8 +1,12 @@
-package OhHa.minesweeper.logic;
+package ohha.minesweeper.logic;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * The class creates the tiles, sets the initial values and then stores them and
+ * their respective positions.
+ */
 public class Grid {
 
     private ArrayList<ArrayList<Tile>> tiles;
