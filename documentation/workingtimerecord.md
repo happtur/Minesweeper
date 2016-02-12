@@ -14,7 +14,7 @@
 new pit report. Made some adjustments to the code. Drew a tad more
 descriptive class diagram.*
 
-**12.02.2016** 6h *(Completed the suggested short GUI builder tutorial).
+**12.02.2016** 7h *(Completed the suggested short GUI builder tutorial).
  Started on the GUI (without using the GUI builder).
  Wrote JavaDoc descriptions for all classes and all methods in Tile.
  Followed the instructions and generated a Checkstyle report,
@@ -25,4 +25,4 @@ descriptive class diagram.*
  Although still not done with studying, I added an ActionListener and
  have a really basic game.*
 
-21.10
+22.10
