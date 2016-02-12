@@ -18,8 +18,9 @@ descriptive class diagram.*
  Started on the GUI (without using the GUI builder).
  Wrote JavaDoc descriptions for all classes and all methods in Tile.
  Followed the instructions and generated a Checkstyle report,
- corrected the errors and generated a new report, which I submitted to
- the documentation.
+ corrected the errors and generated a new report (kind of defeating
+ the purpose of the report),
+ which I submitted to the documentation.
  Wrote tests for Game, created a new pit report.
  Read up on Swing so I can plan the structure of the GUI.
  Although still not done with studying, I added an ActionListener and
