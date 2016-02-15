@@ -38,26 +38,45 @@ public class GUI implements Runnable {
     }
 
     private void createComponents(Container container) {
-        int size = this.game.getSizeOfGrid();
+        
         container.setLayout(new BorderLayout());
 
         //a new window instead of JLabel?
         //"congrats - new game?" or "congrats - size?
         JLabel statusDisplay = new JLabel("Playing", SwingConstants.CENTER);
+        JPanel grid = createGrid(statusDisplay);
+        
+        container.add(statusDisplay, BorderLayout.NORTH);
+        container.add(grid, BorderLayout.CENTER);
+
+    }
+
+    //separate the grid entirely? newGame --> in Grid extends JPanel, alter it there..?
+    //ugly if no remove component?
+    private JPanel createGrid(JLabel statusDisplay) {
+        
+        int size = this.game.getSizeOfGrid();
         JPanel grid = new JPanel(new GridLayout(size, size, 3, 3));
         
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
                 JButton button = new JButton();
                 button.setActionCommand(String.valueOf(x) + ":" + String.valueOf(y));
-                button.addActionListener(new TurnListener(game, button, statusDisplay));
+                button.addActionListener(new TurnListener(game, button, statusDisplay, this));
                 grid.add(button);
             }
         }
+        return grid;
+    }
+    
+    public void newGame(JLabel statusDisplay) {
+        game = new Game(8,10);
+        Container container = frame.getContentPane();
+        container.remove(container.getComponents()[1]);
         
-        container.add(statusDisplay, BorderLayout.NORTH);
+        JPanel grid = this.createGrid(statusDisplay);
+        
         container.add(grid, BorderLayout.CENTER);
-
     }
 
 }

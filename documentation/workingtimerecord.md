@@ -25,3 +25,7 @@ descriptive class diagram.*
  Read up on Swing so I can plan the structure of the GUI.
  Although still not done with studying, I added an ActionListener and
  have a really basic game.*
+
+**16.02.2016 1h** *Submitted a new Checkstyle report, in full this time...
+Wrote some code (game over/won --> new game). (It works, but I should
+probably still do some research)*
