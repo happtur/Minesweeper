@@ -114,18 +114,6 @@ public class GameTest {
                         && !game.turn(1, 1));
     }
     
-//    @Test
-//    public void turningATurnableTileMakesTurnedTilesGrowByOne() {
-//        game = new Game(grid);
-//        
-//    }
-//    
-//    @Test
-//    public void turningSeveralTurnableTilesMakesTurnedTilesGrowByTheNumberOfTiles() {
-//        game = new Game(grid);
-//        
-//    }
-    
     @Test
     public void afterTurningTheLastNonBombTileIsWonReturnsTrue() {
         game = new Game(grid);
@@ -140,12 +128,23 @@ public class GameTest {
         game.flag(2, 3);
         assertEquals(true, game.turn(2, 3));
     }
+
     
-//    @Test
-//    public void afterTurningAFlaggedTileTurnedTilesRemainsTheSame() {
-//        game = new Game(grid);
-//        
-//    }
+    @Test
+    public void turningATileWithCoordinatesOutsideOfTheGridReturnsTrue() {
+        game = new Game(2,0);
+        assertEquals(true, game.turn(3, 0)
+                        && game.turn(1, -2)
+                        && game.turn(2, 2));
+    }
+    
+    @Test
+    public void toCoordinatesReturnsTheRightValues() {
+        game = new Game(2,0);
+        assertEquals(true, game.toCoordinates("1:2")[0] == 1
+                        && game.toCoordinates("2:3")[1] == 3);
+    }
+    
     
     private void turnAllButOneNonBombTiles() {
         game.turn(1, 0);
@@ -160,5 +159,6 @@ public class GameTest {
         game.turn(2, 3);
         game.turn(3, 3);
     }
+    
     
 }

@@ -26,21 +26,20 @@ public class TurnListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
+        int[] coordinates = game.toCoordinates(command);
         if(first) {
             statusdisplay.setText("Playing");
             first = false;
         }
-        if (!game.turn(command)) {
+        if (!game.turn(coordinates[0], coordinates[1])) {
             if (game.isWon()) {
                 statusdisplay.setText("Congratulations, you won!");
             } else {
                 statusdisplay.setText("You lost");
-                //stop current game
-                //somewhere else? this style or?
             }
             gui.newGame(statusdisplay);
         }
-        button.setText(String.valueOf(game.getValue(command)));
+        button.setText(String.valueOf(game.getValue(coordinates[0], coordinates[1])));
         button.setEnabled(false);
     }
 

@@ -27,28 +27,37 @@ public class Game {
     public boolean isTurned(int x, int y) {
         return this.grid.getTile(x, y).isTurned();
     }
-
-    public int getValue(String xy) {
+    
+    public int[] toCoordinates(String xy) {
         String[] coordinates = xy.split(":");
         int x = Integer.parseInt(coordinates[0]);
         int y = Integer.parseInt(coordinates[1]);
         
-        return getValue(x, y);
+        int[] coorInt = new int[]{x,y};
+        return coorInt;
     }
+
+//    public int getValue(String xy) {
+//        String[] coordinates = xy.split(":");
+//        int x = Integer.parseInt(coordinates[0]);
+//        int y = Integer.parseInt(coordinates[1]);
+//        
+//        return getValue(x, y);
+//    }
     
     public int getValue(int x, int y) {
         return this.grid.getTile(x, y).getValue();
     }
-
     
-    public boolean turn(String xy) {
-        String[] coordinates = xy.split(":");
-        int x = Integer.parseInt(coordinates[0]);
-        int y = Integer.parseInt(coordinates[1]);
-        
-        return this.turn(x, y);
-    }
-    //param String xy --> divide and parseInt
+
+//    public boolean turn(String xy) {
+//        String[] coordinates = xy.split(":");
+//        int x = Integer.parseInt(coordinates[0]);
+//        int y = Integer.parseInt(coordinates[1]);
+//        
+//        return this.turn(x, y);
+//    }
+
     public boolean turn(int x, int y) {
         if (!this.grid.tileOnGrid(x, y)) {
             return true;
@@ -64,6 +73,14 @@ public class Game {
         }
         return true;
     }
+    
+//    public void flag(String xy) {
+//        String[] coordinates = xy.split(":");
+//        int x = Integer.parseInt(coordinates[0]);
+//        int y = Integer.parseInt(coordinates[1]);
+//        
+//        this.flag(x, y);
+//    }
 
     public void flag(int x, int y) {
         if (!this.grid.tileOnGrid(x, y)) {
@@ -77,6 +94,14 @@ public class Game {
         return this.turnedTiles == size * size - this.grid.amountOfBombs();
     }
 
+//    public boolean isFlagged(String xy) {
+//        String[] coordinates = xy.split(":");
+//        int x = Integer.parseInt(coordinates[0]);
+//        int y = Integer.parseInt(coordinates[1]);
+//        
+//        return this.isFlagged(x, y);
+//    }
+    
     public boolean isFlagged(int x, int y) {
         return this.grid.getTile(x, y).isFlagged();
     }

@@ -53,6 +53,8 @@ public class GUI implements Runnable {
 
     //separate the grid entirely? newGame --> in Grid extends JPanel, alter it there..?
     //ugly if no remove component?
+    
+    //bombs "left" (total - flagged)
     private JPanel createGrid(JLabel statusDisplay) {
         
         int size = this.game.getSizeOfGrid();
