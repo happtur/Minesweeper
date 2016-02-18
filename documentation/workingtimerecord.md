@@ -35,4 +35,4 @@ probably still do some research). Made some changes in Game and wrote
  the execution of different features. Created three sequence diagrams
  (they're relatively similar to each other, mostly because I haven't
  made all the required decisions yet, so I had to focus on the areas
- where most of the important decisions have been made).
+ where most of the important decisions have been made).*
