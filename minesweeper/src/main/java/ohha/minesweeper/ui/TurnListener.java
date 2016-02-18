@@ -22,6 +22,8 @@ public class TurnListener implements ActionListener {
         this.gui = gui;
         this.first = true;
     }
+    
+    //stuff here or 'repaint'(?) grid or sthg? (especially if 0 -> turn surrounding)
 
     @Override
     public void actionPerformed(ActionEvent e) {

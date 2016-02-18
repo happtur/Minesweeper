@@ -37,6 +37,7 @@ public class GUI implements Runnable {
         frame.setVisible(true);
     }
 
+    //bombs "left" (total - flagged) or progressbar :P
     private void createComponents(Container container) {
         
         container.setLayout(new BorderLayout());
@@ -53,12 +54,14 @@ public class GUI implements Runnable {
 
     //separate the grid entirely? newGame --> in Grid extends JPanel, alter it there..?
     //ugly if no remove component?
-    
-    //bombs "left" (total - flagged)
+    //ToolTip first game? yeees, yees, quantity not quality
+    //setdefaultbutton? rootpane??
     private JPanel createGrid(JLabel statusDisplay) {
         
         int size = this.game.getSizeOfGrid();
         JPanel grid = new JPanel(new GridLayout(size, size, 3, 3));
+        
+        //shared listener? button.name = place in grid? button - component
         
         for (int y = 0; y < size; y++) {
             for (int x = 0; x < size; x++) {
@@ -66,15 +69,20 @@ public class GUI implements Runnable {
                 button.setActionCommand(String.valueOf(x) + ":" + String.valueOf(y));
                 button.addActionListener(new TurnListener(game, button, statusDisplay, this));
                 grid.add(button);
+                
             }
-        }
+        }        
+       
         return grid;
     }
     
+    //MenuBar instead? -> 'manually' (new game,rules,displaybombs?)
+    //both? or button. or editablecombobox :P
+    //JDialog, modal
     public void newGame(JLabel statusDisplay) {
         game = new Game(8,10);
         Container container = frame.getContentPane();
-        container.remove(container.getComponents()[1]);
+        container.remove(1);
         
         JPanel grid = this.createGrid(statusDisplay);
         
