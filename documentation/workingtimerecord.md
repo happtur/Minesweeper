@@ -30,3 +30,9 @@ descriptive class diagram.*
 Wrote some code (game over/won --> new game). (It works, but I should
 probably still do some research). Made some changes in Game and wrote
  a few new tests. Submitted a new pit report.*
+
+**18.02.2016 3h** *Read about Swing Components. Thought about
+ the execution of different features. Created three sequence diagrams
+ (they're relatively similar to each other, mostly because I haven't
+ made all the required decisions yet, so I had to focus on the areas
+ where most of the important decisions have been made).

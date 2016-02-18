@@ -24,7 +24,16 @@ player
 
 - flagging/unflagging a tile
 
+###Class Diagrams
 
 ![Preliminary class diagram](classDiagram1.png)
 
 ![A tad more descriptive diagram](classDiagram2.png)
+
+###Sequence Diagrams
+
+![Sequence diagram 1](turningANonFlaggedBombSeqDia.png)
+
+![Sequence diagram 2](turningANonFlaggedNonLastNonBombSeqDia.png)
+
+![Sequence diagram 3](flaggingATileSeqDia.png)
