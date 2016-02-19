@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import ohha.minesweeper.logic.Game;
 
 public class TurnListener implements ActionListener {
@@ -11,14 +12,14 @@ public class TurnListener implements ActionListener {
     private Game game;
     //get it from source? but then Object - JButton
     private JButton button;
-    private JLabel statusdisplay;
+    private DisplayPanel display;
     private GUI gui;
     private boolean first;
 
-    public TurnListener(Game game, JButton button, JLabel display, GUI gui) {
+    public TurnListener(Game game, JButton button, DisplayPanel display, GUI gui) {
         this.game = game;
         this.button = button;
-        this.statusdisplay = display;
+        this.display = display;
         this.gui = gui;
         this.first = true;
     }
@@ -29,16 +30,16 @@ public class TurnListener implements ActionListener {
         String command = e.getActionCommand();
         int[] coordinates = game.toCoordinates(command);
         if (first) {
-            statusdisplay.setText("Playing");
+            display.setStatus("Playing");
             first = false;
         }
         if (!game.turn(coordinates[0], coordinates[1])) {
             if (game.isWon()) {
-                statusdisplay.setText("Congratulations, you won!");
+                display.setStatus("Congratulations, you won!");
             } else {
-                statusdisplay.setText("You lost");
+                display.setStatus("You lost");
             }
-            gui.newGame(statusdisplay);
+            gui.newGame(display);
         } else if (game.isTurned(coordinates[0], coordinates[1])) {
             button.setText(String.valueOf(game.getValue(coordinates[0], coordinates[1])));
             button.setEnabled(false);

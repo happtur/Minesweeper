@@ -7,9 +7,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 /**
@@ -19,10 +17,6 @@ public class GUI implements Runnable {
 
     private JFrame frame;
     private Game game;
-
-    public GUI() {
-        this.game = new Game(8, 10);
-    }
 
     @Override
     public void run() {
@@ -37,26 +31,27 @@ public class GUI implements Runnable {
         frame.setVisible(true);
     }
 
-    //bombs "left" (total - flagged) or progressbar :P
+
     private void createComponents(Container container) {
         
-        container.setLayout(new BorderLayout());
-
-        //a new window instead of JLabel?
-        //"congrats - new game?" or "congrats - size?
-        JLabel statusDisplay = new JLabel("Playing", SwingConstants.CENTER);
-        JPanel grid = createGrid(statusDisplay);
+        int amountOfBombs = 10;
+        this.game = new Game(8, amountOfBombs);
         
-        container.add(statusDisplay, BorderLayout.NORTH);
+        container.setLayout(new BorderLayout());
+      
+        DisplayPanel display = new DisplayPanel(amountOfBombs);        
+        JPanel grid = createGrid(display);
+        
+        container.add(display, BorderLayout.NORTH);
         container.add(grid, BorderLayout.CENTER);
 
     }
 
     //separate the grid entirely? newGame --> in Grid extends JPanel, alter it there..?
     //ugly if no remove component?
-    //ToolTip first game? yeees, yees, quantity not quality
+    //ToolTip first round? yeees, yees, quantity not quality
     //setdefaultbutton? rootpane??
-    private JPanel createGrid(JLabel statusDisplay) {
+    private JPanel createGrid(DisplayPanel display) {
         
         int size = this.game.getSizeOfGrid();
         JPanel grid = new JPanel(new GridLayout(size, size, 3, 3));
@@ -67,7 +62,7 @@ public class GUI implements Runnable {
             for (int x = 0; x < size; x++) {
                 JButton button = new JButton();
                 button.setActionCommand(String.valueOf(x) + ":" + String.valueOf(y));
-                button.addActionListener(new TurnListener(game, button, statusDisplay, this));
+                button.addActionListener(new TurnListener(game, button, display, this));
                 grid.add(button);
                 
             }
@@ -79,12 +74,14 @@ public class GUI implements Runnable {
     //MenuBar instead? -> 'manually' (new game,rules,displaybombs?)
     //both? or button. or editablecombobox :P
     //JDialog, modal
-    public void newGame(JLabel statusDisplay) {
+    //Action (how do they work), both in menu and listener
+    public void newGame(DisplayPanel display) {
+        
         game = new Game(8,10);
         Container container = frame.getContentPane();
         container.remove(1);
         
-        JPanel grid = this.createGrid(statusDisplay);
+        JPanel grid = this.createGrid(display);
         
         container.add(grid, BorderLayout.CENTER);
     }
