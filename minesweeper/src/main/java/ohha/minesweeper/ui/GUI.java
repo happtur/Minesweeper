@@ -45,10 +45,9 @@ public class GUI implements Runnable {
 
     }
 
-    //separate the grid entirely? newGame --> in Grid extends JPanel, alter it there..?
+    //separate the grid entirely? newGame --> in GridPanel extends JPanel, alter it there..?
     //ugly if no remove component?
     //ToolTip first round? yeees, yees, quantity not quality
-    //setdefaultbutton? rootpane??
     private JPanel createGrid(DisplayPanel display) {
 
         int size = this.game.getSizeOfGrid();
@@ -69,10 +68,9 @@ public class GUI implements Runnable {
     }
 
     //repaint??
-    //MenuBar instead? -> 'manually' (new game,rules,displaybombs?)
-    //both? or button. or editablecombobox :P
-    //JDialog, modal
-    //Action (how do they work), both in menu and listener
+    //MenuBar instead? -> 'manually' (new game,rules,displaybombsleft?)
+    //both? or button.
+    //Action (how does it work), both in menu and listener?
     /**
      * The method starts and displays a new game.
      * 
@@ -94,6 +92,7 @@ public class GUI implements Runnable {
     private void createGame() {
 
         //ask player: size? bombs?
+        //JDialog, modal. or editablecombobox :P
         this.game = new Game(8, 10);
     }
 
