@@ -22,14 +22,13 @@ public class TurnListener implements ActionListener {
         this.gui = gui;
         this.first = true;
     }
-    
-    //stuff here or 'repaint'(?) grid or sthg? (especially if 0 -> turn surrounding)
 
+    //stuff here or 'repaint'(?) grid or sthg? (especially if 0 -> turn surrounding)
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
         int[] coordinates = game.toCoordinates(command);
-        if(first) {
+        if (first) {
             statusdisplay.setText("Playing");
             first = false;
         }
@@ -40,9 +39,10 @@ public class TurnListener implements ActionListener {
                 statusdisplay.setText("You lost");
             }
             gui.newGame(statusdisplay);
+        } else if (game.isTurned(coordinates[0], coordinates[1])) {
+            button.setText(String.valueOf(game.getValue(coordinates[0], coordinates[1])));
+            button.setEnabled(false);
         }
-        button.setText(String.valueOf(game.getValue(coordinates[0], coordinates[1])));
-        button.setEnabled(false);
     }
 
 }
