@@ -89,17 +89,49 @@ public class Grid {
     }
 
 
+    /**
+     * The method returns true if the tile with the coordinates that
+     * correspond to the parameters is on the grid.
+     *
+     * @param x the x-coordinate of the tile
+     * @param y the y-coordinate of the tile
+     * 
+     * @return boolean value for "the tile is on the grid"
+     */
+    
     public boolean tileOnGrid(int x, int y) {
         return x < this.tiles.size() && x > -1 && y < this.tiles.size() && y >= 0;
     }
+    
+    /**
+     * The method returns the tile with the coordinates that
+     * correspond to the parameters.
+     *
+     * @param x the x-coordinate of the tile
+     * @param y the y-coordinate of the tile
+     * 
+     * @return the desired tile
+     */
     
     public Tile getTile(int x, int y) {
         return this.tiles.get(x).get(y);
     }
     
+    /**
+     * The method returns the size of the axes of the grid.
+     * 
+     * @return the size of the grid's axes
+     */
+    
     public int getSize() {
         return this.tiles.size();
     }
+    
+    /**
+     * The method returns the amount of bombs on the grid.
+     * 
+     * @return amount of bombs
+     */
     
     public int amountOfBombs() {
         return this.bombs;

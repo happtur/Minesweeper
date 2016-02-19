@@ -7,6 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import ohha.minesweeper.logic.Game;
 
+/**
+ * The class listens and reacts to left-clicks on the tile-buttons.
+ */
+
 public class TurnListener implements ActionListener {
 
     private Game game;

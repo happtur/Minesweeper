@@ -147,5 +147,15 @@ public class Game {
     public boolean isFlagged(int x, int y) {
         return this.grid.getTile(x, y).isFlagged();
     }
+    
+    /**
+     * The method returns the amount of bombs in the game.
+     * 
+     * @return amount of bombs
+     */
+    
+    public int amountOfBombs() {
+        return this.grid.amountOfBombs();
+    }
 
 }

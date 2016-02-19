@@ -38,4 +38,5 @@ probably still do some research). Made some changes in Game and wrote
  where most of the important decisions have been made).
  Wrote JavaDoc descriptions for methods in Game.*
 
-**19.02.2016 1h** *New class, DisplayPanel*
+**19.02.2016 1.5h** *New class, DisplayPanel. More JavaDoc. Some changes
+ in the code in preparation for new features*

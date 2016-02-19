@@ -33,13 +33,12 @@ public class GUI implements Runnable {
 
 
     private void createComponents(Container container) {
-        
-        int amountOfBombs = 10;
-        this.game = new Game(8, amountOfBombs);
+
+        this.createGame();
         
         container.setLayout(new BorderLayout());
       
-        DisplayPanel display = new DisplayPanel(amountOfBombs);        
+        DisplayPanel display = new DisplayPanel(game.amountOfBombs());        
         JPanel grid = createGrid(display);
         
         container.add(display, BorderLayout.NORTH);
@@ -77,13 +76,22 @@ public class GUI implements Runnable {
     //Action (how do they work), both in menu and listener
     public void newGame(DisplayPanel display) {
         
-        game = new Game(8,10);
+        this.createGame();
+        
         Container container = frame.getContentPane();
         container.remove(1);
         
+        display.setBombs(game.amountOfBombs());
         JPanel grid = this.createGrid(display);
         
         container.add(grid, BorderLayout.CENTER);
+    }
+    
+    private void createGame() {
+        
+        //ask player: size? bombs?
+        
+        this.game = new Game(8, 10);
     }
 
 }

@@ -8,6 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+/**
+ * The class holds the components that display the game's current status.
+ */
+
 public class DisplayPanel extends JPanel{
     private JLabel status;
     private JLabel bombsLeft;
@@ -21,8 +25,8 @@ public class DisplayPanel extends JPanel{
         this.bombsLeft = new JLabel(String.valueOf(bombs));
         this.amountOfBombs = bombs;
         
-        this.add(this.status);
         this.add(this.bombsLeft);
+        this.add(this.status);        
     }
     
     public void setStatus(String newStatus) {
