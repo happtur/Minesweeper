@@ -1,9 +1,9 @@
 package ohha.minesweeper.logic;
 
 /**
- * The class stores and enables changes to the values of the properties of tiles.
- * These are the 'value' (i.e. the number of adjacent bombs or -1), boolean
- * 'turned' and boolean 'flagged
+ * The class stores and enables changes to the values of the properties of
+ * tiles. These are the 'value' (i.e. the number of adjacent bombs or -1),
+ * boolean 'turned' and boolean 'flagged
  */
 public class Tile {
 
@@ -11,6 +11,9 @@ public class Tile {
     private boolean turned;
     private boolean flagged;
 
+    /**
+     * The constructor sets value as 0 and both turned and flagged as false.
+     */
     public Tile() {
         this.value = 0;
         this.turned = false;

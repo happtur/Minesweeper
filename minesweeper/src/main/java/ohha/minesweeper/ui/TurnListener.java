@@ -10,7 +10,6 @@ import ohha.minesweeper.logic.Game;
 /**
  * The class listens and reacts to left-clicks on the tile-buttons.
  */
-
 public class TurnListener implements ActionListener {
 
     private Game game;
@@ -20,6 +19,14 @@ public class TurnListener implements ActionListener {
     private GUI gui;
     private boolean first;
 
+    /**
+     * The constructor.
+     * 
+     * @param game the current game
+     * @param button the button the listener listens to
+     * @param display the game's status display
+     * @param gui the main ui
+     */
     public TurnListener(Game game, JButton button, DisplayPanel display, GUI gui) {
         this.game = game;
         this.button = button;

@@ -16,6 +16,9 @@ public class TextUI implements Runnable {
     private Scanner scanner;
     private Game game;
 
+    /**
+     * The constructor.
+     */
     public TextUI() {
         this.scanner = new Scanner(System.in);
     }
@@ -26,10 +29,10 @@ public class TextUI implements Runnable {
         while (true) {
             System.out.print("size: ");
             int size = Integer.parseInt(scanner.nextLine());
-            
+
             System.out.print("amount of bombs: ");
             int bombs = Integer.parseInt(scanner.nextLine());
-            
+
             this.game = new Game(size, bombs);
 
             while (true) {

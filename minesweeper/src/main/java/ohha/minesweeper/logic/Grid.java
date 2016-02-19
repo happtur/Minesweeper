@@ -13,6 +13,13 @@ public class Grid {
     private int bombs;
     private Random random;
 
+    /**
+     * Constructor with desired Random random, for testing and internal use.
+     *
+     * @param size size of the grid's axes
+     * @param bombs amount of bombs on the grid
+     * @param random the random that determines which tiles will be bombs
+     */
     public Grid(int size, int bombs, Random random) {
 
         this.bombs = bombs;
@@ -22,7 +29,13 @@ public class Grid {
         createBombs();
         setValuesOfTiles();
     }
-    
+
+    /**
+     * The primary constructor.
+     *
+     * @param size size of the grid's axes
+     * @param bombs amount of bombs on the grid
+     */
     public Grid(int size, int bombs) {
         this(size, bombs, new Random());
     }
@@ -36,7 +49,7 @@ public class Grid {
             this.tiles.add(row);
         }
     }
-    
+
     private void createBombs() {
         int size = this.tiles.size();
         for (int i = 0; i < bombs; i++) {
@@ -88,51 +101,46 @@ public class Grid {
         return adjacentBombs;
     }
 
-
     /**
-     * The method returns true if the tile with the coordinates that
-     * correspond to the parameters is on the grid.
+     * The method returns true if the tile with the coordinates that correspond
+     * to the parameters is on the grid.
      *
      * @param x the x-coordinate of the tile
      * @param y the y-coordinate of the tile
-     * 
+     *
      * @return boolean value for "the tile is on the grid"
      */
-    
     public boolean tileOnGrid(int x, int y) {
         return x < this.tiles.size() && x > -1 && y < this.tiles.size() && y >= 0;
     }
-    
+
     /**
-     * The method returns the tile with the coordinates that
-     * correspond to the parameters.
+     * The method returns the tile with the coordinates that correspond to the
+     * parameters.
      *
      * @param x the x-coordinate of the tile
      * @param y the y-coordinate of the tile
-     * 
+     *
      * @return the desired tile
      */
-    
     public Tile getTile(int x, int y) {
         return this.tiles.get(x).get(y);
     }
-    
+
     /**
      * The method returns the size of the axes of the grid.
-     * 
+     *
      * @return the size of the grid's axes
      */
-    
     public int getSize() {
         return this.tiles.size();
     }
-    
+
     /**
      * The method returns the amount of bombs on the grid.
-     * 
+     *
      * @return amount of bombs
      */
-    
     public int amountOfBombs() {
         return this.bombs;
     }
