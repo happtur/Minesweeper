@@ -38,10 +38,11 @@ probably still do some research). Made some changes in Game and wrote
  where most of the important decisions have been made).
  Wrote JavaDoc descriptions for methods in Game.*
 
-**19.02.2016 2.5h** *New class, DisplayPanel. More JavaDoc. Some changes
+**19.02.2016 4.5h** *New class, DisplayPanel. More JavaDoc. Some changes
  in the code in preparation for new features.
  Generated Checkstyle report after making the required changes (also
  checks JavaDoc), fixed the errors (mainly JavaDoc. Instructions quite
  unclear "Kuvaa mahdollisimman paljon julkisia metodeja" and
  "Korjaa kaikki esiintyvät checkstyle-virheet", when missing JavaDoc
- generates errors) and generated a new report. Submitted both.*
+ generates errors) and generated a new report. Submitted both.
+ Refactoring plus a better solution for the buttongrid + listener*

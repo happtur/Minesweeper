@@ -38,36 +38,16 @@ public class GUI implements Runnable {
         container.setLayout(new BorderLayout());
 
         DisplayPanel display = new DisplayPanel(game.amountOfBombs());
-        JPanel grid = createGrid(display);
+        //JPanel grid = createGrid(display);
+        GridPanel grid = new GridPanel(game.getSizeOfGrid());
+        TurnListener listener = new TurnListener(game, grid, display, this);
+        grid.addActionListenerToButtons(listener);
 
         container.add(display, BorderLayout.NORTH);
         container.add(grid, BorderLayout.CENTER);
 
     }
 
-    //separate the grid entirely? newGame --> in GridPanel extends JPanel, alter it there..?
-    //ugly if no remove component?
-    //ToolTip first round? yeees, yees, quantity not quality
-    private JPanel createGrid(DisplayPanel display) {
-
-        int size = this.game.getSizeOfGrid();
-        JPanel grid = new JPanel(new GridLayout(size, size, 3, 3));
-
-        //shared listener? button.name = place in grid? button - component
-        for (int y = 0; y < size; y++) {
-            for (int x = 0; x < size; x++) {
-                JButton button = new JButton();
-                button.setActionCommand(String.valueOf(x) + ":" + String.valueOf(y));
-                button.addActionListener(new TurnListener(game, button, display, this));
-                grid.add(button);
-
-            }
-        }
-
-        return grid;
-    }
-
-    //repaint??
     //MenuBar instead? -> 'manually' (new game,rules,displaybombsleft?)
     //both? or button.
     //Action (how does it work), both in menu and listener?
@@ -84,7 +64,9 @@ public class GUI implements Runnable {
         container.remove(1);
 
         display.setBombs(game.amountOfBombs());
-        JPanel grid = this.createGrid(display);
+        GridPanel grid = new GridPanel(game.getSizeOfGrid());
+        TurnListener listener = new TurnListener(game, grid, display, this);
+        grid.addActionListenerToButtons(listener);
 
         container.add(grid, BorderLayout.CENTER);
     }
