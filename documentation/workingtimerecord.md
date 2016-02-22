@@ -41,8 +41,10 @@ probably still do some research). Made some changes in Game and wrote
 **19.02.2016 4.5h** *New class, DisplayPanel. More JavaDoc. Some changes
  in the code in preparation for new features.
  Generated Checkstyle report after making the required changes (also
- checks JavaDoc), fixed the errors (mainly JavaDoc. Instructions quite
- unclear "Kuvaa mahdollisimman paljon julkisia metodeja" and
- "Korjaa kaikki esiintyvät checkstyle-virheet", when missing JavaDoc
- generates errors) and generated a new report. Submitted both.
+ checks JavaDoc), fixed the errors (mainly JavaDoc) and generated a new
+ report. Submitted both.
  Refactoring plus a better solution for the buttongrid + listener*
+
+**22.02.2016 3h** *Dialog with player ("new game?" when game is over
+ "what size? + how many bombs?" when new game), refactoring and a
+ JMenuBar without listeners.*
