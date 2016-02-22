@@ -12,10 +12,7 @@ import javax.swing.WindowConstants;
 
 public class GameChoicesDialog extends JDialog {
 
-    //save the values like this or simply in the JSliders? To be decided
-    //instead of setting all the time, only when okButton pushed. (if set)
-    //or skip the ok? counter-intuitive?
-    private JSlider gridSlider;
+    private JSlider sizeSlider;
     private JSlider bombSlider;
 
     public GameChoicesDialog(Frame owner) {
@@ -35,50 +32,47 @@ public class GameChoicesDialog extends JDialog {
         container.setLayout(new GridLayout(5, 1));
 
         JLabel gridLabel = new JLabel("Size of grid axes:");
-
-        gridSlider = new JSlider(2, 16, 8);
-        gridSlider.setMajorTickSpacing(2);
-        gridSlider.setMinorTickSpacing(1);
-        gridSlider.setPaintTicks(true);
-        gridSlider.setPaintLabels(true);
+        createSizeSlider();
         
         JLabel bombLabel = new JLabel("Amount of bombs:");
-        
-        bombSlider = new JSlider(0, 64, 10);
-        bombSlider.setMajorTickSpacing(10);
-        bombSlider.setMinorTickSpacing(1);
-        bombSlider.setPaintTicks(true);
-        bombSlider.setPaintLabels(true);
+        createBombSlider();
 
         JButton okButton = new JButton("Ok");
 
-        GameChoicesListener listener = new GameChoicesListener(gridSlider, bombSlider);
-        gridSlider.addChangeListener(listener);
-        bombSlider.addChangeListener(listener);
+        GameChoicesListener listener = new GameChoicesListener(sizeSlider, bombSlider);
+        sizeSlider.addChangeListener(listener);
 
         //okButton listener
         
         container.add(gridLabel);
-        container.add(gridSlider);
+        container.add(sizeSlider);
         container.add(bombLabel);
         container.add(bombSlider);
         container.add(okButton);
 
     }
 
+    private void createBombSlider() {
+        this.bombSlider = new JSlider(0, 64, 10);
+        bombSlider.setMajorTickSpacing(10);
+        bombSlider.setMinorTickSpacing(1);
+        bombSlider.setPaintTicks(true);
+        bombSlider.setPaintLabels(true);
+    }
+
+    private void createSizeSlider() {
+        this.sizeSlider = new JSlider(2, 16, 8);
+        sizeSlider.setMajorTickSpacing(2);
+        sizeSlider.setMinorTickSpacing(1);
+        sizeSlider.setPaintTicks(true);
+        sizeSlider.setPaintLabels(true);
+    }
+
     public int getGridSize() {
-        return this.gridSlider.getValue();
+        return this.sizeSlider.getValue();
     }
 
     public int getBombAmount() {
-        
-        int gridsize = this.gridSlider.getValue();
-        int max = gridsize*gridsize;
-        
-        if(bombSlider.getValue() > max) {
-            return max;
-        }
-        
         return this.bombSlider.getValue();
     }
 

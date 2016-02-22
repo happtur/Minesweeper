@@ -15,7 +15,6 @@ public class GameChoicesListener implements ChangeListener {
         this.bombSlider = bombSlider;
     }
 
-    //change when okButton has listener? 
     @Override
     public void stateChanged(ChangeEvent e) {
         if (e.getSource() == sizeSlider) {

@@ -11,7 +11,7 @@ public class ButtonGrid extends JPanel {
     private HashMap<String, JButton> buttons;
     
 
-    //make the frame's size more fluid (?) and the buttons' constant?
+    //make the frame's size more flexible and the buttons' constant?
     public ButtonGrid(int size) {
         super(new GridLayout(size, size, 3, 3));
         this.buttons = new HashMap<>();
