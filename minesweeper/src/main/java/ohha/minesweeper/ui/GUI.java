@@ -1,13 +1,14 @@
 package ohha.minesweeper.ui;
 
+import ohha.minesweeper.ui.dialog.GameChoicesDialog;
 import java.awt.BorderLayout;
 import ohha.minesweeper.logic.Game;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.WindowConstants;
 
 /**
@@ -33,24 +34,45 @@ public class GUI implements Runnable {
 
     private void createComponents(Container container) {
 
-        this.createGame();
+        game = new Game(8, 10);
 
         container.setLayout(new BorderLayout());
 
         DisplayPanel display = new DisplayPanel(game.amountOfBombs());
-        //JPanel grid = createGrid(display);
-        GridPanel grid = new GridPanel(game.getSizeOfGrid());
+        
+        ButtonGrid grid = new ButtonGrid(game.getSizeOfGrid());
         TurnListener listener = new TurnListener(game, grid, display, this);
         grid.addActionListenerToButtons(listener);
+        grid.setToolTipTextForButtons("Left-click turns, right-click flags");
 
+        //a button in "display" instead of menu?
+        this.createMenu(display);
         container.add(display, BorderLayout.NORTH);
         container.add(grid, BorderLayout.CENTER);
 
     }
+    
+    private void createMenu(DisplayPanel display) {
+        JMenuBar menuBar = new JMenuBar();
+        
+        JMenu menu = new JMenu("Menu");
+        menuBar.add(menu);
+        
+        JMenuItem newGameMenuItem = new JMenuItem("New Game");
+        //newGameMenuItem.setAccelerator(KeyStroke.get ...);
+        //create Action...? just listener
+        menu.add(newGameMenuItem);
+        
+        JMenuItem gameRules = new JMenuItem("Instructions");
+        //add icon
+        //listener + rulethingy
+        menu.add(gameRules);
+        
+        //display bombsLeft-checkbox?
+        
+        frame.setJMenuBar(menuBar);
+    }
 
-    //MenuBar instead? -> 'manually' (new game,rules,displaybombsleft?)
-    //both? or button.
-    //Action (how does it work), both in menu and listener?
     /**
      * The method starts and displays a new game.
      * 
@@ -63,19 +85,28 @@ public class GUI implements Runnable {
         Container container = frame.getContentPane();
         container.remove(1);
 
-        display.setBombs(game.amountOfBombs());
-        GridPanel grid = new GridPanel(game.getSizeOfGrid());
+        ButtonGrid grid = new ButtonGrid(game.getSizeOfGrid());
         TurnListener listener = new TurnListener(game, grid, display, this);
         grid.addActionListenerToButtons(listener);
 
         container.add(grid, BorderLayout.CENTER);
+        display.setBombs(game.amountOfBombs());
+        
+        frame.pack();
     }
 
     private void createGame() {
 
-        //ask player: size? bombs?
-        //JDialog, modal. or editablecombobox :P
-        this.game = new Game(8, 10);
+        GameChoicesDialog dialog = new GameChoicesDialog(frame);
+        int size = dialog.getGridSize();
+        int bombs = dialog.getBombAmount();
+        
+        this.game = new Game(size, bombs);
     }
+
+    public JFrame getFrame() {
+        return this.frame;
+    }
+    
 
 }

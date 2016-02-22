@@ -104,9 +104,14 @@ public class Game {
 
         Tile toBeTurned = this.grid.getTile(x, y);
         if (toBeTurned.turn()) {
+            
+            if(toBeTurned.isBomb()) {
+                return false;
+            }
+            
             this.turnedTiles++;
 
-            if (toBeTurned.isBomb() || this.isWon()) {
+            if (this.isWon()) {
                 return false;
             }
         }

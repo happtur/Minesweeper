@@ -7,11 +7,12 @@ import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class GridPanel extends JPanel {
+public class ButtonGrid extends JPanel {
     private HashMap<String, JButton> buttons;
     
 
-    public GridPanel(int size) {
+    //make the frame's size more fluid (?) and the buttons' constant?
+    public ButtonGrid(int size) {
         super(new GridLayout(size, size, 3, 3));
         this.buttons = new HashMap<>();
         
@@ -41,5 +42,11 @@ public class GridPanel extends JPanel {
     
     public void setButtonAsEnabled(String buttonIdentifier, boolean enabled) {
         this.buttons.get(buttonIdentifier).setEnabled(enabled);
+    }
+    
+    public void setToolTipTextForButtons(String text) {
+        for(JButton button : this.buttons.values()) {
+            button.setToolTipText(text);
+        }
     }
 }

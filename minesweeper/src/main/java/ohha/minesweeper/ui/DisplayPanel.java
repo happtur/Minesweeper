@@ -1,5 +1,6 @@
 package ohha.minesweeper.ui;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import javax.swing.BoxLayout;
@@ -25,14 +26,14 @@ public class DisplayPanel extends JPanel {
      */
     public DisplayPanel(int bombs) {
         //super(new GridLayout(1,2));
-        super(new FlowLayout(SwingConstants.LEADING, 30, 5));
+        super(new FlowLayout(SwingConstants.TRAILING, 30, 5));
 
-        this.status = new JLabel("Playing");
         this.bombsLeft = new JLabel(String.valueOf(bombs));
+        this.status = new JLabel("Playing");
         this.amountOfBombs = bombs;
 
+        this.add(this.status);        
         this.add(this.bombsLeft);
-        this.add(this.status);
     }
 
     /**
