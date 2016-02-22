@@ -1,4 +1,3 @@
-
 package ohha.minesweeper.ui.dialog;
 
 import javax.swing.JSlider;
@@ -7,35 +6,26 @@ import javax.swing.event.ChangeListener;
 import ohha.minesweeper.ui.dialog.GameChoicesDialog;
 
 public class GameChoicesListener implements ChangeListener {
+
     private JSlider sizeSlider;
     private JSlider bombSlider;
-    private GameChoicesDialog dialog;
 
-    public GameChoicesListener(JSlider sizeSlider, JSlider bombSlider, GameChoicesDialog dialog) {
+    public GameChoicesListener(JSlider sizeSlider, JSlider bombSlider) {
         this.sizeSlider = sizeSlider;
         this.bombSlider = bombSlider;
-        this.dialog = dialog;
     }
-    
 
+    //change when okButton has listener? 
     @Override
     public void stateChanged(ChangeEvent e) {
-        if(e.getSource() == sizeSlider) {
-            
-            if(!sizeSlider.getValueIsAdjusting()) {
+        if (e.getSource() == sizeSlider) {
+
+            if (!sizeSlider.getValueIsAdjusting()) {
                 int value = sizeSlider.getValue();
-                
-                bombSlider.setMaximum(value*value);                
-                dialog.setGridSize(value);
-            }
-            
-        } else if(e.getSource() == bombSlider) {
-            
-            if(!bombSlider.getValueIsAdjusting()) {
-                dialog.setBombAmount(bombSlider.getValue());
-                
+
+                bombSlider.setMaximum(value * value);
             }
         }
     }
-    
+
 }

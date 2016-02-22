@@ -13,14 +13,13 @@ import javax.swing.WindowConstants;
 public class GameChoicesDialog extends JDialog {
 
     //save the values like this or simply in the JSliders? To be decided
-    private int gridsize;
-    private int bombamount;
+    //instead of setting all the time, only when okButton pushed. (if set)
+    //or skip the ok? counter-intuitive?
+    private JSlider gridSlider;
+    private JSlider bombSlider;
 
     public GameChoicesDialog(Frame owner) {
         super(owner, "Game options", true);
-
-        this.gridsize = 8;
-        this.bombamount = 10;
 
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         this.setPreferredSize(new Dimension(800, 350));
@@ -37,56 +36,50 @@ public class GameChoicesDialog extends JDialog {
 
         JLabel gridLabel = new JLabel("Size of grid axes:");
 
-        JSlider gridSize = new JSlider(2, 16, 8);
-        gridSize.setMajorTickSpacing(2);
-        gridSize.setMinorTickSpacing(1);
-        gridSize.setPaintTicks(true);
-        gridSize.setPaintLabels(true);
+        gridSlider = new JSlider(2, 16, 8);
+        gridSlider.setMajorTickSpacing(2);
+        gridSlider.setMinorTickSpacing(1);
+        gridSlider.setPaintTicks(true);
+        gridSlider.setPaintLabels(true);
         
         JLabel bombLabel = new JLabel("Amount of bombs:");
         
-        JSlider amountOfBombs = new JSlider(0, 64, 10);
-        amountOfBombs.setMajorTickSpacing(10);
-        amountOfBombs.setMinorTickSpacing(1);
-        amountOfBombs.setPaintTicks(true);
-        amountOfBombs.setPaintLabels(true);
+        bombSlider = new JSlider(0, 64, 10);
+        bombSlider.setMajorTickSpacing(10);
+        bombSlider.setMinorTickSpacing(1);
+        bombSlider.setPaintTicks(true);
+        bombSlider.setPaintLabels(true);
 
         JButton okButton = new JButton("Ok");
 
-        GameChoicesListener listener = new GameChoicesListener(gridSize, amountOfBombs, this);
-        gridSize.addChangeListener(listener);
-        amountOfBombs.addChangeListener(listener);
+        GameChoicesListener listener = new GameChoicesListener(gridSlider, bombSlider);
+        gridSlider.addChangeListener(listener);
+        bombSlider.addChangeListener(listener);
 
         //okButton listener
         
         container.add(gridLabel);
-        container.add(gridSize);
+        container.add(gridSlider);
         container.add(bombLabel);
-        container.add(amountOfBombs);
+        container.add(bombSlider);
         container.add(okButton);
 
     }
 
-    public void setGridSize(int size) {
-        this.gridsize = size;
-    }
-
-    public void setBombAmount(int bombs) {
-        this.bombamount = bombs;
-    }
-
     public int getGridSize() {
-        return this.gridsize;
+        return this.gridSlider.getValue();
     }
 
     public int getBombAmount() {
+        
+        int gridsize = this.gridSlider.getValue();
         int max = gridsize*gridsize;
         
-        if(bombamount > max) {
+        if(bombSlider.getValue() > max) {
             return max;
         }
         
-        return this.bombamount;
+        return this.bombSlider.getValue();
     }
 
 }
