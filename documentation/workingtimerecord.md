@@ -45,6 +45,6 @@ probably still do some research). Made some changes in Game and wrote
  report. Submitted both.
  Refactoring plus a better solution for the buttongrid + listener*
 
-**22.02.2016 3h** *Dialog with player ("new game?" when game is over
+**22.02.2016 3.5h** *Dialog with player ("new game?" when game is over
  "what size? + how many bombs?" when new game), refactoring and a
- JMenuBar without listeners.*
+ JMenuBar without listeners. Made corrections to dialog and TurnListener.*

@@ -62,6 +62,7 @@ public class TurnListener implements ActionListener {
             
         } else {
             display.setStatus("You lost");
+            grid.setAllButtonsAsEnabled(false);
         }
         
         if (this.askIfNewGame()) {

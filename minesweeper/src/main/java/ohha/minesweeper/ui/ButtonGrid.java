@@ -49,4 +49,10 @@ public class ButtonGrid extends JPanel {
             button.setToolTipText(text);
         }
     }
+
+    void setAllButtonsAsEnabled(boolean enabled) {
+        for(JButton button : this.buttons.values()) {
+            button.setEnabled(enabled);
+        }
+    }
 }
