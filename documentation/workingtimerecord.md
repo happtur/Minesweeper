@@ -49,5 +49,6 @@ probably still do some research). Made some changes in Game and wrote
  "what size? + how many bombs?" when new game), refactoring and a
  JMenuBar without listeners. Made corrections to dialog and TurnListener.*
 
-**24.02.2016 1.5h** *Implemented invisible flagging :P
- To be worked on.*
+**24.02.2016 2.5h** *Implemented invisible flagging :P
+ To be worked on. Made it visible. Added a listener to the
+ "New game"-menubutton.*

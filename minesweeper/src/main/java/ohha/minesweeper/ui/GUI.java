@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import ohha.minesweeper.logic.Game;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -49,31 +50,33 @@ public class GUI implements Runnable {
         container.add(grid, BorderLayout.CENTER);
 
     }
-    
+
     private void createMenu(DisplayPanel display) {
         JMenuBar menuBar = new JMenuBar();
-        
+
         JMenu menu = new JMenu("Menu");
         menuBar.add(menu);
-        
+
         JMenuItem newGameMenuItem = new JMenuItem("New Game");
         //newGameMenuItem.setAccelerator(KeyStroke.get ...);
-        //create Action...? just listener
         menu.add(newGameMenuItem);
-        
+
         JMenuItem gameRules = new JMenuItem("Instructions");
         //add icon
-        //listener + rulethingy
         menu.add(gameRules);
-        
+
         //display bombsLeft-checkbox?
         
+        ActionListener listener = new MenuActionListener(newGameMenuItem, gameRules, display, this);
+        newGameMenuItem.addActionListener(listener);
+        gameRules.addActionListener(listener);
+
         frame.setJMenuBar(menuBar);
     }
 
     /**
      * The method starts and displays a new game.
-     * 
+     *
      * @param display the game's status display
      */
     public void newGame(DisplayPanel display) {
@@ -87,20 +90,20 @@ public class GUI implements Runnable {
 
         container.add(grid, BorderLayout.CENTER);
         display.setBombs(game.amountOfBombs());
-        
+
         frame.pack();
     }
 
     private ButtonGrid createGrid(DisplayPanel display) {
-        
+
         ButtonGrid grid = new ButtonGrid(game.getSizeOfGrid());
-        
+
         TurnListener tListener = new TurnListener(game, grid, display, this);
         grid.addActionListenerToButtons(tListener);
-        
+
         FlagListener fListener = new FlagListener(game, display);
         grid.addMouseListenerToButtons(fListener);
-        
+
         return grid;
     }
 
@@ -109,13 +112,12 @@ public class GUI implements Runnable {
         GameChoicesDialog dialog = new GameChoicesDialog(frame);
         int size = dialog.getGridSize();
         int bombs = dialog.getBombAmount();
-        
+
         this.game = new Game(size, bombs);
     }
 
     public JFrame getFrame() {
         return this.frame;
     }
-    
 
 }
