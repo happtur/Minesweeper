@@ -76,7 +76,7 @@ public class DisplayPanel extends JPanel {
         this.updateBombs();
     }
 
-    //security, not under 0?
+    
     private void updateBombs() {
         this.bombsLeft.setText(String.valueOf(this.amountOfBombs));
     }

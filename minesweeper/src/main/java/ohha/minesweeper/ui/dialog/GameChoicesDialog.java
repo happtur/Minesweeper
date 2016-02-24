@@ -28,7 +28,6 @@ public class GameChoicesDialog extends JDialog {
     }
 
     private void createComponents(Container container) {
-        //clean this shit up :)
         container.setLayout(new GridLayout(5, 1));
 
         JLabel gridLabel = new JLabel("Size of grid axes:");
@@ -37,7 +36,7 @@ public class GameChoicesDialog extends JDialog {
         JLabel bombLabel = new JLabel("Amount of bombs:");
         createBombSlider();
 
-        JButton okButton = new JButton("Ok");
+        //JButton okButton = new JButton("Ok");
 
         GameChoicesListener listener = new GameChoicesListener(sizeSlider, bombSlider);
         sizeSlider.addChangeListener(listener);
@@ -48,7 +47,7 @@ public class GameChoicesDialog extends JDialog {
         container.add(sizeSlider);
         container.add(bombLabel);
         container.add(bombSlider);
-        container.add(okButton);
+        //container.add(okButton);
 
     }
 

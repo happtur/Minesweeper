@@ -3,6 +3,7 @@ package ohha.minesweeper.ui;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.HashMap;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -53,6 +54,12 @@ public class ButtonGrid extends JPanel {
     void setAllButtonsAsEnabled(boolean enabled) {
         for(JButton button : this.buttons.values()) {
             button.setEnabled(enabled);
+        }
+    }
+
+    void addMouseListenerToButtons(MouseListener fListener) {
+        for(JButton button : this.buttons.values()) {
+            button.addMouseListener(fListener);
         }
     }
 }

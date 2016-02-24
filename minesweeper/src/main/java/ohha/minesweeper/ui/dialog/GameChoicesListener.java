@@ -3,7 +3,6 @@ package ohha.minesweeper.ui.dialog;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import ohha.minesweeper.ui.dialog.GameChoicesDialog;
 
 public class GameChoicesListener implements ChangeListener {
 
@@ -26,5 +25,4 @@ public class GameChoicesListener implements ChangeListener {
             }
         }
     }
-
 }

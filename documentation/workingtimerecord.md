@@ -48,3 +48,6 @@ probably still do some research). Made some changes in Game and wrote
 **22.02.2016 3.5h** *Dialog with player ("new game?" when game is over
  "what size? + how many bombs?" when new game), refactoring and a
  JMenuBar without listeners. Made corrections to dialog and TurnListener.*
+
+**24.02.2016 1.5h** *Implemented invisible flagging :P
+ To be worked on.*

@@ -39,10 +39,8 @@ public class GUI implements Runnable {
         container.setLayout(new BorderLayout());
 
         DisplayPanel display = new DisplayPanel(game.amountOfBombs());
-        
-        ButtonGrid grid = new ButtonGrid(game.getSizeOfGrid());
-        TurnListener listener = new TurnListener(game, grid, display, this);
-        grid.addActionListenerToButtons(listener);
+
+        ButtonGrid grid = this.createGrid(display);
         grid.setToolTipTextForButtons("Left-click turns, right-click flags");
 
         //a button in "display" instead of menu?
@@ -85,14 +83,25 @@ public class GUI implements Runnable {
         Container container = frame.getContentPane();
         container.remove(1);
 
-        ButtonGrid grid = new ButtonGrid(game.getSizeOfGrid());
-        TurnListener listener = new TurnListener(game, grid, display, this);
-        grid.addActionListenerToButtons(listener);
+        ButtonGrid grid = createGrid(display);
 
         container.add(grid, BorderLayout.CENTER);
         display.setBombs(game.amountOfBombs());
         
         frame.pack();
+    }
+
+    private ButtonGrid createGrid(DisplayPanel display) {
+        
+        ButtonGrid grid = new ButtonGrid(game.getSizeOfGrid());
+        
+        TurnListener tListener = new TurnListener(game, grid, display, this);
+        grid.addActionListenerToButtons(tListener);
+        
+        FlagListener fListener = new FlagListener(game, display);
+        grid.addMouseListenerToButtons(fListener);
+        
+        return grid;
     }
 
     private void createGame() {

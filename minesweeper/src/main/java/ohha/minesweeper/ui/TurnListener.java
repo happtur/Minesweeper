@@ -4,9 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import ohha.minesweeper.logic.Game;
-import ohha.minesweeper.ui.ButtonGrid;
-import ohha.minesweeper.ui.DisplayPanel;
-import ohha.minesweeper.ui.GUI;
 
 /**
  * The class listens and reacts to left-clicks on the tile-buttons.
@@ -35,7 +32,6 @@ public class TurnListener implements ActionListener {
         this.first = true;
     }
 
-    //stuff here or 'repaint'(?) grid or sthg? (especially if 0 -> turn surrounding)
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
