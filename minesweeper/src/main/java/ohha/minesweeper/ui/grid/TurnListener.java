@@ -1,9 +1,11 @@
-package ohha.minesweeper.ui;
+package ohha.minesweeper.ui.grid;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import ohha.minesweeper.logic.Game;
+import ohha.minesweeper.ui.DisplayPanel;
+import ohha.minesweeper.ui.GUI;
 
 /**
  * The class listens and reacts to left-clicks on the tile-buttons.

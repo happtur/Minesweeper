@@ -1,5 +1,5 @@
 
-package ohha.minesweeper.ui;
+package ohha.minesweeper.ui.grid;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -37,6 +37,12 @@ public class ButtonGrid extends JPanel {
         }
     }
     
+    public void addMouseListenerToButtons(MouseListener fListener) {
+        for(JButton button : this.buttons.values()) {
+            button.addMouseListener(fListener);
+        }
+    }
+    
     public void setTextOfButton(String buttonIdentifier, String text) {
         this.buttons.get(buttonIdentifier).setText(text);
     }
@@ -51,15 +57,10 @@ public class ButtonGrid extends JPanel {
         }
     }
 
-    void setAllButtonsAsEnabled(boolean enabled) {
+    public void setAllButtonsAsEnabled(boolean enabled) {
         for(JButton button : this.buttons.values()) {
             button.setEnabled(enabled);
         }
     }
 
-    void addMouseListenerToButtons(MouseListener fListener) {
-        for(JButton button : this.buttons.values()) {
-            button.addMouseListener(fListener);
-        }
-    }
 }

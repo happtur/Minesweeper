@@ -1,11 +1,12 @@
 
-package ohha.minesweeper.ui;
+package ohha.minesweeper.ui.grid;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 import ohha.minesweeper.logic.Game;
+import ohha.minesweeper.ui.DisplayPanel;
 
 public class FlagListener implements MouseListener {
     private Game game;
