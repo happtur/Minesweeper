@@ -7,8 +7,6 @@ import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 import ohha.minesweeper.logic.Game;
 
-//mouseListener doesn't have an ACTIONcommand... so separate MouseListener for
-//flagging? where (JButton) source? or non-shared listeners...
 public class FlagListener implements MouseListener {
     private Game game;
     private DisplayPanel display;
@@ -33,9 +31,11 @@ public class FlagListener implements MouseListener {
                 
                 if(game.isFlagged(coordinates[0], coordinates[1])) {
                     //setIcon
+                    source.setText("x");
                     display.oneLessBomb();
                 } else {
                     //removeIcon
+                    source.setText("");
                     display.oneMoreBomb();
                 }
             }
