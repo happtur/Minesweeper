@@ -54,9 +54,10 @@ public class TurnListener implements ActionListener {
         if (game.isWon()) {
             display.setStatus("Congratulations, you won!");
             grid.setTextOfButton(command, String.valueOf(game.getValue(coordinates[0], coordinates[1])));
-            grid.setButtonAsEnabled(command, false);
+            grid.setAllButtonsAsEnabled(false);
             
         } else {
+            //show the hidden bombs?
             display.setStatus("You lost");
             grid.setAllButtonsAsEnabled(false);
         }

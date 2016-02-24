@@ -26,7 +26,7 @@ public class FlagListener implements MouseListener {
                 String command = source.getActionCommand();
                 int[] coordinates = game.toCoordinates(command);
                 
-                //make flag(x,y) to return boolean ?
+                //make flag(x,y) to 'return boolean' ?
                 game.flag(coordinates[0], coordinates[1]);
                 
                 if(game.isFlagged(coordinates[0], coordinates[1])) {
