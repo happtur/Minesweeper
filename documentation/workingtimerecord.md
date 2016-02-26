@@ -53,4 +53,6 @@ probably still do some research). Made some changes in Game and wrote
  To be worked on. Made it visible. Added a listener to the
  "New game"-menubutton.*
 
-**26.02.2016 0.5h** *JavaDoc. Checkstyle.*
+**26.02.2016 1.5h** *JavaDoc. Checkstyle. Wrote and added instructions
+ and hastily done description of the structure. Made the .jar-file, got
+ files, not sure what original-.. does but what the heck, uploaded*
