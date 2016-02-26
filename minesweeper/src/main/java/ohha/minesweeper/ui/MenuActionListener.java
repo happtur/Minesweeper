@@ -5,39 +5,44 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 
+/**
+ * The class listens for and reacts to actions in the menu.
+ */
 public class MenuActionListener implements ActionListener {
-
-    private JMenuItem newGame;
-    private JMenuItem gameRules;
+    
     private DisplayPanel display;
     private GUI gui;
 
-    public MenuActionListener(JMenuItem newGameMenuItem, JMenuItem gameRules, DisplayPanel display, GUI gui) {
-        this.newGame = newGameMenuItem;
-        this.gameRules = gameRules;
+    /**
+     * The constructor.
+     *
+     * @param display the game's status display
+     * @param gui the main ui
+     */
+    public MenuActionListener(DisplayPanel display, GUI gui) {
         this.display = display;
         this.gui = gui;
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == newGame) {
-
+        if (e.getActionCommand().equals("new game")) {
+            
             int answer = JOptionPane.showConfirmDialog(gui.getFrame(),
                     "Are you sure you want to start a new game?",
                     "New Game",
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
                     null);
-
+            
             if (answer == JOptionPane.YES_OPTION) {
                 gui.newGame(display);
-
+                
             }
-
-        } else if (e.getSource() == gameRules) {
+            
+        } else if (e.getActionCommand().equals("rules")) {
             //show game instructions in new window
         }
     }
-
+    
 }

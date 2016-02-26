@@ -9,15 +9,23 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
 import javax.swing.WindowConstants;
-
+/**
+ * The class manages input (grid size and amount of bombs) from the user.
+ */
 public class GameChoicesDialog extends JDialog {
 
     private JSlider sizeSlider;
     private JSlider bombSlider;
 
+    /**
+     * The constructor. Creates and sets visible
+     *
+     * @param owner the frame this JDialog is connected to
+     */
     public GameChoicesDialog(Frame owner) {
         super(owner, "Game options", true);
 
+        //save the values somewhere else so we can remove this when closing?
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         this.setPreferredSize(new Dimension(800, 350));
 

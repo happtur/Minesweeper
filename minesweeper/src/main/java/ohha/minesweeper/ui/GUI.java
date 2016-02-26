@@ -62,15 +62,16 @@ public class GUI implements Runnable {
 
         JMenuItem newGameMenuItem = new JMenuItem("New Game");
         //newGameMenuItem.setAccelerator(KeyStroke.get ...);
+        newGameMenuItem.setActionCommand("new game");
         menu.add(newGameMenuItem);
 
         JMenuItem gameRules = new JMenuItem("Instructions");
         //add icon
+        gameRules.setActionCommand("rules");
         menu.add(gameRules);
 
         //display bombsLeft-checkbox?
-        
-        ActionListener listener = new MenuActionListener(newGameMenuItem, gameRules, display, this);
+        ActionListener listener = new MenuActionListener(display, this);
         newGameMenuItem.addActionListener(listener);
         gameRules.addActionListener(listener);
 

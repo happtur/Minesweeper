@@ -52,3 +52,5 @@ probably still do some research). Made some changes in Game and wrote
 **24.02.2016 2.5h** *Implemented invisible flagging :P
  To be worked on. Made it visible. Added a listener to the
  "New game"-menubutton.*
+
+**26.02.2016 0.5h** *JavaDoc. Checkstyle.*
