@@ -9,7 +9,7 @@ The purpose of the game is to turn (by left-clicking them) every tile in the gri
 
 
 To help you keep count of the undiscovered bombs a counter, that starts
- at the total amount of bombs and decreases when you turn a tile, is
+ at the total amount of bombs and decreases when you flag a tile, is
  displayed in the top left corner.
 
 
