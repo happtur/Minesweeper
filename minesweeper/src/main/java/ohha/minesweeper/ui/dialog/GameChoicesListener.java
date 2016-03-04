@@ -20,6 +20,8 @@ public class GameChoicesListener implements ChangeListener {
      *
      * @param sizeSlider the slider where the user chooses the size of the grid
      * @param bombSlider the slider where the user chooses the amount of bombs
+     * @param bombLabel the label located above the bombSlider, displaying information
+     * about the slider and a suggestion
      */
     public GameChoicesListener(JSlider sizeSlider, JSlider bombSlider, JLabel bombLabel) {
         this.sizeSlider = sizeSlider;
@@ -33,7 +35,7 @@ public class GameChoicesListener implements ChangeListener {
 
             if (!sizeSlider.getValueIsAdjusting()) {
                 int value = sizeSlider.getValue();
-                int suggestion = (int) (value * value * 0.22);
+                int suggestion = (int) (value * value * 0.2);
                 
                 bombLabel.setText("Amount of bombs:     (suggestion: " + suggestion + ")");
                 bombSlider.setMaximum(value * value);

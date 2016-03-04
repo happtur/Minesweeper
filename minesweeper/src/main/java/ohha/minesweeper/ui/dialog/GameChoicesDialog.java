@@ -4,7 +4,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GridLayout;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JSlider;
@@ -26,7 +25,7 @@ public class GameChoicesDialog extends JDialog {
         super(owner, "Game options", true);
 
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-        this.setPreferredSize(new Dimension(800, 350));
+        this.setPreferredSize(new Dimension(800, 300));
 
         createComponents(this.getContentPane());
 
@@ -40,7 +39,7 @@ public class GameChoicesDialog extends JDialog {
         JLabel gridLabel = new JLabel("Size of grid axes:");
         createSizeSlider();
         
-        JLabel bombLabel = new JLabel("Amount of bombs:     (suggestion: 14)");
+        JLabel bombLabel = new JLabel("Amount of bombs:     (suggestion: 12)");
         createBombSlider();
 
         //define the listener here instead?
@@ -55,7 +54,7 @@ public class GameChoicesDialog extends JDialog {
     }
 
     private void createBombSlider() {
-        this.bombSlider = new JSlider(0, 64, 14);
+        this.bombSlider = new JSlider(0, 64, 12);
         bombSlider.setMajorTickSpacing(10);
         bombSlider.setMinorTickSpacing(1);
         bombSlider.setPaintTicks(true);

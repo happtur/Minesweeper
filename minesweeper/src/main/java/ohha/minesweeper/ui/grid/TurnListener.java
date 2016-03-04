@@ -2,7 +2,6 @@ package ohha.minesweeper.ui.grid;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import ohha.minesweeper.logic.Game;
 import ohha.minesweeper.ui.DisplayPanel;
