@@ -30,7 +30,6 @@ public class GameChoicesDialog extends JDialog {
         createComponents(this.getContentPane());
 
         this.pack();
-        this.setVisible(true);
     }
 
     private void createComponents(Container container) {

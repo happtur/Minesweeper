@@ -1,4 +1,4 @@
-package ohha.minesweeper.ui;
+package ohha.minesweeper.ui.frame;
 
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -7,24 +7,22 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
+import ohha.minesweeper.ui.GUI;
 
 /**
  * The class listens for and reacts to actions in the menu.
  */
 public class MenuActionListener implements ActionListener {
     
-    private DisplayPanel display;
     private GUI gui;
     private JDialog dialog;
 
     /**
      * The constructor.
      *
-     * @param display the game's status display
      * @param gui the main ui
      */
-    public MenuActionListener(DisplayPanel display, GUI gui) {
-        this.display = display;
+    public MenuActionListener(GUI gui) {
         this.gui = gui;
     }
     
@@ -40,7 +38,7 @@ public class MenuActionListener implements ActionListener {
                     null);
             
             if (answer == JOptionPane.YES_OPTION) {
-                gui.newGame(display);
+                gui.newGame();
                 
             }
             

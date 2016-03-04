@@ -1,133 +1,155 @@
 package ohha.minesweeper.ui;
 
+import ohha.minesweeper.ui.frame.MainFrame;
+import ohha.minesweeper.ui.frame.DisplayPanel;
 import ohha.minesweeper.ui.grid.TurnListener;
 import ohha.minesweeper.ui.grid.FlagListener;
 import ohha.minesweeper.ui.grid.ButtonGrid;
 import ohha.minesweeper.ui.dialog.GameChoicesDialog;
-import java.awt.BorderLayout;
 import ohha.minesweeper.logic.Game;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.WindowConstants;
+import javax.swing.JOptionPane;
 
 /**
  * The class is the main GUI class.
  */
 public class GUI implements Runnable {
 
-    //refactor so GUI "holds the strings"? the only one with access to
-    //game, maybe buttongrid, display? and the listeners calls gui.act(actioncommand) ?
-    //will it get too big? it's a bit of a sekamelska at the moment?
-    //split into two classes, one painting the frame etc and one with the strings?
-    //basically mainframe-class and ui-logic/organizer-class..
-    //but then we have silly listeners not really doing anything?
-    private JFrame frame;
+    private MainFrame frame;
     private Game game;
+    private DisplayPanel display;
+    private ButtonGrid grid;
+    private GameChoicesDialog dialog;
+    private boolean first;
 
     @Override
     public void run() {
-        frame = new JFrame("Minesweeper");
-
-        frame.setPreferredSize(new Dimension(600, 620));
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        createComponents(frame.getContentPane());
-
-        frame.pack();
-        frame.setVisible(true);
-    }
-
-    private void createComponents(Container container) {
-
         game = new Game(8, 10);
+        first = true;
 
-        container.setLayout(new BorderLayout());
-
-        DisplayPanel display = new DisplayPanel(game.amountOfBombs());
-
-        ButtonGrid grid = this.createGrid(display);
+        display = new DisplayPanel(game.amountOfBombs());
+        this.createGrid();
         grid.setToolTipTextForButtons("Left-click turns, right-click flags");
 
-        //a button in "display" instead of menu?
-        this.createMenu(display);
-        container.add(display, BorderLayout.NORTH);
-        container.add(grid, BorderLayout.CENTER);
-
-    }
-
-    private void createMenu(DisplayPanel display) {
-        JMenuBar menuBar = new JMenuBar();
-
-        JMenu menu = new JMenu("Menu");
-        menuBar.add(menu);
-
-        JMenuItem newGameMenuItem = new JMenuItem("New Game");
-        //newGameMenuItem.setAccelerator(KeyStroke.get ...);
-        newGameMenuItem.setActionCommand("new game");
-        menu.add(newGameMenuItem);
-
-        JMenuItem gameRules = new JMenuItem("Instructions");
-        //add icon
-        gameRules.setActionCommand("rules");
-        menu.add(gameRules);
-
-        ActionListener listener = new MenuActionListener(display, this);
-        newGameMenuItem.addActionListener(listener);
-        gameRules.addActionListener(listener);
-
-        frame.setJMenuBar(menuBar);
+        frame = new MainFrame(display, grid, this);
+        frame.setVisible(true);
     }
 
     /**
      * The method starts and displays a new game.
      *
-     * @param display the game's status display
      */
-    public void newGame(DisplayPanel display) {
+    public void newGame() {
 
+        first = true;
         this.createGame();
 
-        Container container = frame.getContentPane();
-        container.remove(1);
+        this.createGrid();
+        frame.replaceButtonGrid(grid);
 
-        ButtonGrid grid = createGrid(display);
-
-        container.add(grid, BorderLayout.CENTER);
         display.setBombs(game.amountOfBombs());
 
-        frame.pack();
     }
 
-    private ButtonGrid createGrid(DisplayPanel display) {
+    private void createGrid() {
 
-        ButtonGrid grid = new ButtonGrid(game.getSizeOfGrid());
+        grid = new ButtonGrid(game.getSizeOfGrid());
 
-        TurnListener tListener = new TurnListener(game, grid, display, this);
+        TurnListener tListener = new TurnListener(this);
         grid.addActionListenerToButtons(tListener);
 
-        FlagListener fListener = new FlagListener(game, display);
+        FlagListener fListener = new FlagListener(this);
         grid.addMouseListenerToButtons(fListener);
-
-        return grid;
     }
 
     private void createGame() {
 
-        GameChoicesDialog dialog = new GameChoicesDialog(frame);
+        if (this.dialog == null) {
+            dialog = new GameChoicesDialog(frame);
+        }
+        dialog.setVisible(true);
         int size = dialog.getGridSize();
         int bombs = dialog.getBombAmount();
-        dialog.dispose();
+        dialog.setVisible(false);
 
         this.game = new Game(size, bombs);
+    }
+
+    /**
+     * The method performs the actions that are to be performed when the player
+     * flags/unflags a tile. I.e. the tile, display and button are updated
+     *
+     * @param button the button to be flagged
+     */
+    public void actionFlagTile(JButton button) {
+        String command = button.getActionCommand();
+
+        int[] coordinates = game.toCoordinates(command);
+
+        if (game.flag(coordinates[0], coordinates[1])) {
+            //setIcon
+            button.setText("x");
+            display.oneLessBomb();
+        } else {
+            //removeIcon
+            button.setText("");
+            display.oneMoreBomb();
+        }
+    }
+
+    /**
+     * The method performs the actions that are to be performed when the player
+     * attempts to turn a tile.
+     *
+     * @param command the coordinates of the tile in question as String ("x:y")
+     */
+    public void actionTurnTile(String command) {
+        int[] coordinates = game.toCoordinates(command);
+        if (first) {
+            display.setStatus("Playing");
+            first = false;
+        }
+        if (!game.turn(coordinates[0], coordinates[1])) {
+            gameIsOver(command, coordinates);
+
+        } else if (game.isTurned(coordinates[0], coordinates[1])) {
+            int value = game.getValue(coordinates[0], coordinates[1]);
+            grid.setTextOfButton(command, String.valueOf(value));
+            grid.setButtonAsEnabled(command, false);
+        }
+    }
+
+    private void gameIsOver(String command, int[] coordinates) {
+        if (game.isWon()) {
+            display.setStatus("Congratulations, you won!");
+            grid.setTextOfButton(command, String.valueOf(game.getValue(coordinates[0], coordinates[1])));
+            grid.setAllButtonsAsEnabled(false);
+
+        } else {
+            //show the hidden bombs?
+            display.setStatus("You lost");
+            grid.setAllButtonsAsEnabled(false);
+        }
+
+        if (this.askIfNewGame()) {
+            this.newGame();
+        }
+    }
+
+    private boolean askIfNewGame() {
+
+        int answer = JOptionPane.showConfirmDialog(frame,
+                "Would you like to start a new game?",
+                "New Game",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null);
+
+        return answer == JOptionPane.YES_OPTION;
     }
 
     public JFrame getFrame() {
         return this.frame;
     }
-
 }

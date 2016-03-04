@@ -4,26 +4,22 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JButton;
 import javax.swing.SwingUtilities;
-import ohha.minesweeper.logic.Game;
-import ohha.minesweeper.ui.DisplayPanel;
+import ohha.minesweeper.ui.GUI;
 
 /**
  * The class listens and reacts to right-clicks on the tile-buttons.
  */
 public class FlagListener implements MouseListener {
 
-    private Game game;
-    private DisplayPanel display;
+    private GUI gui;
 
     /**
      * The constructor.
      *
-     * @param game the current game
-     * @param display the game's status display
+     * @param gui the main gui object
      */
-    public FlagListener(Game game, DisplayPanel display) {
-        this.game = game;
-        this.display = display;
+    public FlagListener(GUI gui) {
+        this.gui = gui;
     }
 
     @Override
@@ -32,21 +28,9 @@ public class FlagListener implements MouseListener {
 
             if (e.getSource().getClass() == JButton.class) {
                 JButton source = (JButton) e.getSource();
-
-                //maybe ugly when ActionCommand in MouseListener?
-                //I know it's there because of the TurnListener, but eugh..?
-                String command = source.getActionCommand();
-                int[] coordinates = game.toCoordinates(command);
-
-                if (game.flag(coordinates[0], coordinates[1])) {
-                    //setIcon
-                    source.setText("x");
-                    display.oneLessBomb();
-                } else {
-                    //removeIcon
-                    source.setText("");
-                    display.oneMoreBomb();
-                }
+                
+                gui.actionFlagTile(source);
+                
             }
         }
     }

@@ -2,9 +2,6 @@ package ohha.minesweeper.ui.grid;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
-import ohha.minesweeper.logic.Game;
-import ohha.minesweeper.ui.DisplayPanel;
 import ohha.minesweeper.ui.GUI;
 
 /**
@@ -12,73 +9,21 @@ import ohha.minesweeper.ui.GUI;
  */
 public class TurnListener implements ActionListener {
 
-    private Game game;
-    private ButtonGrid grid;
-    private DisplayPanel display;
     private GUI gui;
-    private boolean first;
 
     /**
      * The constructor.
      *
-     * @param game the current game
-     * @param grid the grid of buttons the listener listens to
-     * @param display the game's status display
-     * @param gui the main ui
+     * @param gui the main ui object
      */
-    public TurnListener(Game game, ButtonGrid grid, DisplayPanel display, GUI gui) {
-        this.game = game;
-        this.grid = grid;
-        this.display = display;
+    public TurnListener(GUI gui) {
         this.gui = gui;
-        this.first = true;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
-        int[] coordinates = game.toCoordinates(command);
-        if (first) {
-            display.setStatus("Playing");
-            first = false;
-        }
-        if (!game.turn(coordinates[0], coordinates[1])) {
-            gameIsOver(command, coordinates);
-            
-        } else if (game.isTurned(coordinates[0], coordinates[1])) {
-            int value = game.getValue(coordinates[0], coordinates[1]);
-            grid.setTextOfButton(command, String.valueOf(value));
-            grid.setButtonAsEnabled(command, false);            
-        }
-    }
-
-    private void gameIsOver(String command, int[] coordinates) {
-        if (game.isWon()) {
-            display.setStatus("Congratulations, you won!");
-            grid.setTextOfButton(command, String.valueOf(game.getValue(coordinates[0], coordinates[1])));
-            grid.setAllButtonsAsEnabled(false);
-            
-        } else {
-            //show the hidden bombs?
-            display.setStatus("You lost");
-            grid.setAllButtonsAsEnabled(false);
-        }
-        
-        if (this.askIfNewGame()) {
-            gui.newGame(display);
-        }
-    }
-
-    private boolean askIfNewGame() {
-
-        int answer = JOptionPane.showConfirmDialog(gui.getFrame(),
-                "Would you like to start a new game?",
-                "New Game",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null);
-
-        return answer == JOptionPane.YES_OPTION;
+        gui.actionTurnTile(command);
     }
 
 }

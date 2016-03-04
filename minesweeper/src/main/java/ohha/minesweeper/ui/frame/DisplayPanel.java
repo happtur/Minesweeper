@@ -1,9 +1,6 @@
-package ohha.minesweeper.ui;
+package ohha.minesweeper.ui.frame;
 
-import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
