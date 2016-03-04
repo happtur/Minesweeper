@@ -20,6 +20,12 @@ import javax.swing.WindowConstants;
  */
 public class GUI implements Runnable {
 
+    //refactor so GUI "holds the strings"? the only one with access to
+    //game, maybe buttongrid, display? and the listeners calls gui.act(actioncommand) ?
+    //will it get too big? it's a bit of a sekamelska at the moment?
+    //split into two classes, one painting the frame etc and one with the strings?
+    //basically mainframe-class and ui-logic/organizer-class..
+    //but then we have silly listeners not really doing anything?
     private JFrame frame;
     private Game game;
 
@@ -70,7 +76,6 @@ public class GUI implements Runnable {
         gameRules.setActionCommand("rules");
         menu.add(gameRules);
 
-        //display bombsLeft-checkbox?
         ActionListener listener = new MenuActionListener(display, this);
         newGameMenuItem.addActionListener(listener);
         gameRules.addActionListener(listener);

@@ -2,6 +2,7 @@ package ohha.minesweeper.ui.grid;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import ohha.minesweeper.logic.Game;
 import ohha.minesweeper.ui.DisplayPanel;
@@ -46,9 +47,9 @@ public class TurnListener implements ActionListener {
             gameIsOver(command, coordinates);
             
         } else if (game.isTurned(coordinates[0], coordinates[1])) {
-            //if value == 0 --> get surrounding buttons, turn them (unless flagged?)?
-            grid.setTextOfButton(command, String.valueOf(game.getValue(coordinates[0], coordinates[1])));
-            grid.setButtonAsEnabled(command, false);
+            int value = game.getValue(coordinates[0], coordinates[1]);
+            grid.setTextOfButton(command, String.valueOf(value));
+            grid.setButtonAsEnabled(command, false);            
         }
     }
 

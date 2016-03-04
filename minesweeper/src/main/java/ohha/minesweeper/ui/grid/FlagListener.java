@@ -33,6 +33,8 @@ public class FlagListener implements MouseListener {
             if (e.getSource().getClass() == JButton.class) {
                 JButton source = (JButton) e.getSource();
 
+                //maybe ugly when ActionCommand in MouseListener?
+                //I know it's there because of the TurnListener, but eugh..?
                 String command = source.getActionCommand();
                 int[] coordinates = game.toCoordinates(command);
 

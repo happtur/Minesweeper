@@ -41,12 +41,13 @@ public class GameChoicesDialog extends JDialog {
         JLabel gridLabel = new JLabel("Size of grid axes:");
         createSizeSlider();
         
-        JLabel bombLabel = new JLabel("Amount of bombs:");
+        JLabel bombLabel = new JLabel("Amount of bombs:     (suggestion: 12)");
         createBombSlider();
 
         //JButton okButton = new JButton("Ok");
 
-        GameChoicesListener listener = new GameChoicesListener(sizeSlider, bombSlider);
+        //define the listener here instead?
+        GameChoicesListener listener = new GameChoicesListener(sizeSlider, bombSlider, bombLabel);
         sizeSlider.addChangeListener(listener);
 
         //okButton listener
@@ -60,7 +61,7 @@ public class GameChoicesDialog extends JDialog {
     }
 
     private void createBombSlider() {
-        this.bombSlider = new JSlider(0, 64, 10);
+        this.bombSlider = new JSlider(0, 64, 12);
         bombSlider.setMajorTickSpacing(10);
         bombSlider.setMinorTickSpacing(1);
         bombSlider.setPaintTicks(true);

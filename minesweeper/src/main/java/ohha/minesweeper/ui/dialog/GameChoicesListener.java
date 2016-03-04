@@ -1,5 +1,6 @@
 package ohha.minesweeper.ui.dialog;
 
+import javax.swing.JLabel;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -12,6 +13,7 @@ public class GameChoicesListener implements ChangeListener {
 
     private JSlider sizeSlider;
     private JSlider bombSlider;
+    private JLabel bombLabel;
 
     /**
      * The constructor.
@@ -19,9 +21,10 @@ public class GameChoicesListener implements ChangeListener {
      * @param sizeSlider the slider where the user chooses the size of the grid
      * @param bombSlider the slider where the user chooses the amount of bombs
      */
-    public GameChoicesListener(JSlider sizeSlider, JSlider bombSlider) {
+    public GameChoicesListener(JSlider sizeSlider, JSlider bombSlider, JLabel bombLabel) {
         this.sizeSlider = sizeSlider;
         this.bombSlider = bombSlider;
+        this.bombLabel = bombLabel;
     }
 
     @Override
@@ -30,7 +33,9 @@ public class GameChoicesListener implements ChangeListener {
 
             if (!sizeSlider.getValueIsAdjusting()) {
                 int value = sizeSlider.getValue();
-
+                int suggestion = (int) (value * value * 0.22);
+                
+                bombLabel.setText("Amount of bombs:     (suggestion: " + suggestion + ")");
                 bombSlider.setMaximum(value * value);
             }
         }
