@@ -57,7 +57,7 @@ probably still do some research). Made some changes in Game and wrote
  and hastily done description of the structure. Made the .jar-file, got
  files, not sure what original-.. does but what the heck, uploaded*
 
-**04.03.2016 6h** *Added a suggestion in the GameChoicesDialog and
+**04.03.2016 6.5h** *Added a suggestion in the GameChoicesDialog and
  other minor changes. Combined flag(x, y) with isFlagged(x, y).
  Removed the TextUI. Realized I'm an idiot for calling the 'bombs'
  __bombs__ when the game is called __minesweeper__. Added the
@@ -68,4 +68,5 @@ probably still do some research). Made some changes in Game and wrote
  call a meethod in GUI which handles the events. GUI might be too big
  and a bit too 'diverse' (not single responsibility), but I prefer
  this over the 'every class is connected to every other class' the
- gui was before.*
+ gui was before. Updated structure.md and generated new reports plus
+ new apidoc.*
