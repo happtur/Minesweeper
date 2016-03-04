@@ -56,27 +56,19 @@ public class GameTest {
     }
 
     @Test
-    public void isFlaggedReturnsFalseForAllValuesOfXAndYInTheBeginning() {
+    public void flagReturnsTrueForAllValuesOfXAndYInTheBeginning() {
         game = new Game(2, 1);
-        assertEquals(false, game.isFlagged(0, 0)
-                && game.isFlagged(0, 1)
-                && game.isFlagged(1, 0)
-                && game.isFlagged(1, 1));
+        assertEquals(true, game.flag(0, 0)
+                && game.flag(0, 1)
+                && game.flag(1, 0)
+                && game.flag(1, 1));
     }
 
     @Test
-    public void afterFlaggingATileItIsFlagged() {
+    public void flaggingATileTwiceReturnsFalse() {
         game = new Game(2, 1);
         game.flag(0, 0);
-        assertEquals(true, game.isFlagged(0, 0));
-    }
-
-    @Test
-    public void afterFlaggingATileTwiceItIsNotFlagged() {
-        game = new Game(2, 1);
-        game.flag(0, 0);
-        game.flag(0, 0);
-        assertEquals(false, game.isFlagged(0, 0));
+        assertEquals(false, game.flag(0, 0));
     }
 
     @Test

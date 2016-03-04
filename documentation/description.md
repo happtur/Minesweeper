@@ -36,4 +36,4 @@ player
 
 ![Sequence diagram 2](turningANonFlaggedNonLastNonBombSeqDia.png)
 
-![Sequence diagram 3](flaggingATileSeqDia.png)
+![Sequence diagram 3](updatedFlaggingATileSeqDia.png)

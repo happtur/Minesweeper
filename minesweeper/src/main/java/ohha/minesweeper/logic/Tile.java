@@ -72,9 +72,12 @@ public class Tile {
 
     /**
      * The method flags an unflagged tile and unflags a flagged tile.
+     * 
+     * @return boolean value of 'the tile is flagged'
      */
-    public void flag() {
+    public boolean flag() {
         this.flagged = !this.flagged;
+        return this.flagged;
     }
 
     /**
@@ -84,15 +87,6 @@ public class Tile {
      */
     public boolean isTurned() {
         return this.turned;
-    }
-
-    /**
-     * The methods is used to see if the tile is flagged.
-     *
-     * @return boolean value of 'the tile is flagged'
-     */
-    public boolean isFlagged() {
-        return this.flagged;
     }
 
 }

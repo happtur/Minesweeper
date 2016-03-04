@@ -33,8 +33,8 @@ public class TileTest {
     }
     
     @Test
-    public void theConstructorSetsFlaggesAsFalse() {
-        assertEquals(false, tile.isFlagged());
+    public void flaggingAfterTheConstructorReturnsTrue() {
+        assertEquals(true, tile.flag());
     }
     
     @Test
@@ -126,16 +126,16 @@ public class TileTest {
     }
     
     @Test
-    public void flaggingAnUnflaggedTileMarksItAsFlagged() {
-        tile.flag();
-        assertEquals(true, tile.isFlagged());
+    public void flaggingAFlaggedTileReturnsFalse() {
+        tile.flag();        
+        assertEquals(false, tile.flag());
     }
     
     @Test
-    public void flaggingAFlaggedTileMarksItAsUnflagged() {
+    public void flaggingATileForTheThirdTimeReturnsTrue() {
         tile.flag();
         tile.flag();
-        assertEquals(false, tile.isFlagged());
+        assertEquals(true, tile.flag());
     }
     
 }

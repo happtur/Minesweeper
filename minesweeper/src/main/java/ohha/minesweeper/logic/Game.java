@@ -124,13 +124,13 @@ public class Game {
      *
      * @param x the x-coordinate of the tile
      * @param y the y-coordinate of the tile
+     * 
+     * @return boolean value for "the tile is flagged"
      *
      */
-    public void flag(int x, int y) {
-        if (!this.grid.tileOnGrid(x, y)) {
-            return;
-        }
-        this.grid.getTile(x, y).flag();
+    public boolean flag(int x, int y) {
+        
+        return this.grid.getTile(x, y).flag();
     }
 
     /**
@@ -141,19 +141,6 @@ public class Game {
     public boolean isWon() {
         int size = this.grid.getSize();
         return this.turnedTiles == size * size - this.grid.amountOfBombs();
-    }
-
-    /**
-     * The method returns true if the tile with the coordinates that correspond
-     * to the parameters is flagged.
-     *
-     * @param x the x-coordinate of the tile
-     * @param y the y-coordinate of the tile
-     *
-     * @return boolean value for "the tile is flagged"
-     */
-    public boolean isFlagged(int x, int y) {
-        return this.grid.getTile(x, y).isFlagged();
     }
 
     /**

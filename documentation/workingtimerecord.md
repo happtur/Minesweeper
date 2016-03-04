@@ -57,5 +57,5 @@ probably still do some research). Made some changes in Game and wrote
  and hastily done description of the structure. Made the .jar-file, got
  files, not sure what original-.. does but what the heck, uploaded*
 
-**04.03.2016 0.75h** *Added a suggestion in the GameChoicesDialog and
- other minor changes.*
+**04.03.2016 1.25h** *Added a suggestion in the GameChoicesDialog and
+ other minor changes. Combined flag(x, y) with isFlagged(x, y).*
