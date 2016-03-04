@@ -8,15 +8,17 @@ logic naturally consists of the classes handling the logic of the game.
  and stored. And Tile that keeps the information about the specific tiles.
 
 
-In ui there is the main ui-class GUI, which stores the Game-object and
- where the DisplayPanel, ButtonGrid(s) (one at a time) and related
- listeners are created. The menu and its listener are also created here
- because they are connected to the frame which is stored and handled in
- the GUI-class.
+In ui there is the main ui-class GUI, which controls the gui-components
+ (like the MainFrame, ButtonGrid and DisplayPanel) and communicates
+ with the Game-class.
 
-
-ui has two sub-packages: dialog and grid. dialog keeps the classes
- GameChoicesDialog and GameChoicesListener that handle the input from
- the user. In grid ButtonGrid, which consists of the JButtons that
- represent the tiles, and its listeners (the ActionListener TurnListener
- and MouseListener FlagListener).
+ui has three sub-packages: frame, dialog and grid.
+ -frame is where the MainFrame-related classes (the MainFrame which
+ is the main frame of the game. The DisplayPanel that sits at the top
+ of the frame and the MenuActionListener which is the MainFrame's menu's
+ ActionListener) are.
+ -dialog keeps the classes GameChoicesDialog and GameChoicesListener
+ that handle the input from the user.
+ -In grid ButtonGrid, which
+ consists of the JButtons that represent the tiles, and its listeners
+ (the ActionListener TurnListener and MouseListener FlagListener).
