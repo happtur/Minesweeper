@@ -141,6 +141,12 @@ public class GameTest {
         game = new Game(3, 2);
         assertEquals(2, game.amountOfBombs());
     }
+    
+    @Test
+    public void ifAllTilesInTheGridAreBombsIsWonReturnsFalse() {
+        game = new Game(2, 4);
+        assertEquals(false, game.isWon());
+    }
 
     private void turnAllButOneNonBombTiles() {
         game.turn(1, 0);
