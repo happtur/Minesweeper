@@ -121,6 +121,7 @@ public class GUI implements Runnable {
         GameChoicesDialog dialog = new GameChoicesDialog(frame);
         int size = dialog.getGridSize();
         int bombs = dialog.getBombAmount();
+        dialog.dispose();
 
         this.game = new Game(size, bombs);
     }

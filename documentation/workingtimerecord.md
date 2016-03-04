@@ -57,5 +57,9 @@ probably still do some research). Made some changes in Game and wrote
  and hastily done description of the structure. Made the .jar-file, got
  files, not sure what original-.. does but what the heck, uploaded*
 
-**04.03.2016 1.25h** *Added a suggestion in the GameChoicesDialog and
- other minor changes. Combined flag(x, y) with isFlagged(x, y).*
+**04.03.2016 2.5h** *Added a suggestion in the GameChoicesDialog and
+ other minor changes. Combined flag(x, y) with isFlagged(x, y).
+ Removed the TextUI. Realized I'm an idiot for calling the 'bombs'
+ __bombs__ when the game is called __mine__sweeper. Added the
+ InstructionsDialog, the text should really be read from a file, buut
+ that's too time consuming.*

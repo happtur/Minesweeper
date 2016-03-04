@@ -25,7 +25,6 @@ public class GameChoicesDialog extends JDialog {
     public GameChoicesDialog(Frame owner) {
         super(owner, "Game options", true);
 
-        //save the values somewhere else so we can remove this when closing?
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         this.setPreferredSize(new Dimension(800, 350));
 
@@ -41,27 +40,22 @@ public class GameChoicesDialog extends JDialog {
         JLabel gridLabel = new JLabel("Size of grid axes:");
         createSizeSlider();
         
-        JLabel bombLabel = new JLabel("Amount of bombs:     (suggestion: 12)");
+        JLabel bombLabel = new JLabel("Amount of bombs:     (suggestion: 14)");
         createBombSlider();
-
-        //JButton okButton = new JButton("Ok");
 
         //define the listener here instead?
         GameChoicesListener listener = new GameChoicesListener(sizeSlider, bombSlider, bombLabel);
         sizeSlider.addChangeListener(listener);
-
-        //okButton listener
         
         container.add(gridLabel);
         container.add(sizeSlider);
         container.add(bombLabel);
         container.add(bombSlider);
-        //container.add(okButton);
 
     }
 
     private void createBombSlider() {
-        this.bombSlider = new JSlider(0, 64, 12);
+        this.bombSlider = new JSlider(0, 64, 14);
         bombSlider.setMajorTickSpacing(10);
         bombSlider.setMinorTickSpacing(1);
         bombSlider.setPaintTicks(true);

@@ -1,7 +1,6 @@
 package ohha.minesweeper.logic;
 
 import ohha.minesweeper.ui.GUI;
-import ohha.minesweeper.ui.TextUI;
 import javax.swing.SwingUtilities;
 
 /**

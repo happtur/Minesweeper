@@ -12,6 +12,7 @@ public class MenuActionListener implements ActionListener {
     
     private DisplayPanel display;
     private GUI gui;
+    private InstructionsDialog dialog;
 
     /**
      * The constructor.
@@ -41,7 +42,10 @@ public class MenuActionListener implements ActionListener {
             }
             
         } else if (e.getActionCommand().equals("rules")) {
-            //show game instructions in new window
+            if (this.dialog == null) {
+                this.dialog = new InstructionsDialog(gui.getFrame());
+            }
+            this.dialog.setVisible(true);
         }
     }
     
