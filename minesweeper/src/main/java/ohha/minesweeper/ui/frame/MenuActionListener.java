@@ -76,6 +76,7 @@ public class MenuActionListener implements ActionListener {
                 + "\n"
                 + " Good luck and enjoy! :)");
         
+        textArea.setEditable(false);
         dialog.getContentPane().add(textArea);
         dialog.pack();
     }
